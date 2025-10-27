@@ -3,8 +3,8 @@
 			nav: {
 				brand: 'vibeperform',
 				links: [
-					{ label: 'Workshops', href: '#workshops' },
-					{ label: 'About us', href: '#about-us' },
+					{ label: 'Workshops', href: '/workshops' },
+					{ label: 'About us', href: '/about' },
 				],
 				toggleLabel: 'DE',
 				toggleAriaLabel: 'Switch language to German',
@@ -46,8 +46,8 @@
 			nav: {
 				brand: 'vibeperform',
 				links: [
-					{ label: 'Workshops', href: '#workshops' },
-					{ label: 'Ueber uns', href: '#about-us' },
+					{ label: 'Workshops', href: '/de/workshops' },
+					{ label: 'Ueber uns', href: '/de/ueber-uns' },
 				],
 				toggleLabel: 'EN',
 				toggleAriaLabel: 'Sprache zu Englisch wechseln',

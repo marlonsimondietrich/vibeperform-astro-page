@@ -15,18 +15,18 @@ const homeHref = currentLocale === 'de' ? '/de/' : '/';
 
 <div class="flex min-h-screen flex-col px-6 py-8">
 	<nav class="mx-auto flex w-full max-w-6xl items-center justify-between py-4">
-		<a class="text-base font-semibold uppercase tracking-[0.35em] text-white" href={homeHref}>{nav.brand}</a>
+		<a class="text-base font-semibold uppercase tracking-[0.35em] text-slate-900" href={homeHref}>{nav.brand}</a>
 		<div class="flex items-center gap-6">
 			{nav.links.map((link) => (
 				<a
-					class="text-sm font-medium uppercase tracking-[0.25em] text-slate-300 transition hover:text-white"
+					class="text-sm font-medium uppercase tracking-[0.25em] text-slate-600 transition hover:text-slate-900"
 					href={link.href}
 				>
 					{link.label}
 				</a>
 			))}
 			<a
-				class="rounded-full border border-slate-700 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-200 transition hover:border-slate-500 hover:text-white"
+				class="rounded-full border border-slate-400 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-700 transition hover:border-slate-600 hover:text-slate-900"
 				href={alternateLocaleHref}
 				aria-label={nav.toggleAriaLabel}
 			>
@@ -39,12 +39,12 @@ const homeHref = currentLocale === 'de' ? '/de/' : '/';
 			id="about-us"
 			class="mx-auto flex min-h-[60vh] w-full max-w-3xl flex-col items-center justify-center space-y-6 text-center"
 		>
-			<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">{hero.kicker}</p>
+			<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">{hero.kicker}</p>
 			<h1 class="text-4xl font-semibold leading-tight md:text-6xl md:leading-tight">{hero.title}</h1>
-			<p class="text-lg text-slate-300 md:text-xl">{hero.subtitle}</p>
+			<p class="text-lg text-slate-600 md:text-xl">{hero.subtitle}</p>
 			<div class="flex flex-col items-center justify-center gap-4 pt-6 sm:flex-row">
 				<Button>{hero.primaryCta}</Button>
-				<a class="text-slate-300 transition hover:text-white" href={hero.secondaryHref}>
+				<a class="text-slate-700 transition hover:text-slate-900" href={hero.secondaryHref}>
 					{hero.secondaryCta}
 				</a>
 			</div>
@@ -54,9 +54,9 @@ const homeHref = currentLocale === 'de' ? '/de/' : '/';
 			<div class="grid grid-cols-1 gap-12 md:grid-cols-3">
 				{features.items.map((item) => (
 					<div class="space-y-4">
-						<h3 class="text-xl font-semibold text-white">{item.title}</h3>
+						<h3 class="text-xl font-semibold text-slate-900">{item.title}</h3>
 						{item.description.map((paragraph) => (
-							<p class="text-slate-300">{paragraph}</p>
+							<p class="text-slate-600">{paragraph}</p>
 						))}
 					</div>
 				))}
