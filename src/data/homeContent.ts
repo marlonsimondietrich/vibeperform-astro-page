@@ -3,8 +3,8 @@
 			nav: {
 				brand: 'vibeperform',
 				links: [
-					{ label: 'Workshops', href: '/workshops' },
-					{ label: 'About us', href: '/about' },
+					{ label: 'Workshops', href: '/vibeperform-astro-page/workshops' },
+					{ label: 'About us', href: '/vibeperform-astro-page/about-us' },
 				],
 				toggleLabel: 'DE',
 				toggleAriaLabel: 'Switch language to German',
@@ -46,8 +46,8 @@
 			nav: {
 				brand: 'vibeperform',
 				links: [
-					{ label: 'Workshops', href: '/de/workshops' },
-					{ label: 'Ueber uns', href: '/de/ueber-uns' },
+					{ label: 'Workshops', href: '/vibeperform-astro-page/de/workshops' },
+					{ label: 'Ueber uns', href: '/vibeperform-astro-page/de/ueber-uns' },
 				],
 				toggleLabel: 'EN',
 				toggleAriaLabel: 'Sprache zu Englisch wechseln',

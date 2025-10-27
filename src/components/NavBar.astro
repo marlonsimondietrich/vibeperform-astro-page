@@ -1,0 +1,34 @@
+---
+import type { HomeContent } from '../data/homeContent';
+
+type NavContent = HomeContent['nav'];
+
+interface Props {
+	nav: NavContent;
+	homeHref: string;
+	alternateLocaleHref: string;
+}
+
+const { nav, homeHref, alternateLocaleHref } = Astro.props as Props;
+---
+
+<nav class="mx-auto flex w-full max-w-6xl items-center justify-between py-4">
+	<a class="text-base font-semibold uppercase tracking-[0.35em] text-slate-900" href={homeHref}>{nav.brand}</a>
+	<div class="flex items-center gap-6">
+		{nav.links.map((link) => (
+			<a
+				class="text-sm font-medium uppercase tracking-[0.25em] text-slate-600 transition hover:text-slate-900"
+				href={link.href}
+			>
+				{link.label}
+			</a>
+		))}
+		<a
+			class="rounded-full border border-slate-400 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-700 transition hover:border-slate-600 hover:text-slate-900"
+			href={alternateLocaleHref}
+			aria-label={nav.toggleAriaLabel}
+		>
+			{nav.toggleLabel}
+		</a>
+	</div>
+</nav>
