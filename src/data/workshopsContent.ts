@@ -23,14 +23,17 @@ export const workshopsContent = {
 				{
 					title: "You don't need more theory.",
 					body: 'You need clarity on where AI can drive revenue, save hours, or remove bottlenecks. That’s what we map with you in under a day.',
+					icon: 'lightbulb',
 				},
 				{
 					title: 'We build, not just advise.',
 					body: 'We combine software engineering and learning design. We don’t hand you slides – we co-design and then prototype with you.',
+					icon: 'user-round-cog',
 				},
 				{
 					title: 'Your team leaves with next steps.',
 					body: 'Every session ends with 1 owned use case, success criteria, and a concrete path to implementation.',
+					icon: 'rocket',
 				},
 			],
 		},
@@ -134,14 +137,17 @@ export const workshopsContent = {
 				{
 					title: 'Weniger Theorie. Mehr Umsetzung.',
 					body: 'Ihr braucht Klarheit, wo KI echten Mehrwert bringt, Zeit spart oder Engpässe löst. Genau das machen wir mit euch – in unter einem Tag.',
+					icon: 'lightbulb',
 				},
 				{
 					title: 'Wir bauen mit euch.',
 					body: 'Wir verbinden Software-Entwicklung mit Lern- und Change-Kompetenz. Heißt: Wir entwerfen die Lösung mit euch – und setzen sie um.',
+					icon: 'user-round-cog',
 				},
 				{
 					title: 'Klarheit. Nächste Schritte. Loslegen.',
 					body: 'Am Ende steht ein priorisierter Use Case mit Nutzen, Erfolgskennzahlen und Umsetzungsplan.',
+					icon: 'rocket',
 				},
 			],
 		},
