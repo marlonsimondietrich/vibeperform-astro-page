@@ -12,7 +12,7 @@ export const homeContent = {
 			menuToggleLabel: 'Toggle navigation menu',
 		},
 		hero: {
-			kicker: 'Vibeperform',
+			kicker: 'AI service provider',
 			title: 'From idea to impact.',
 			rotatingWords: ['Fast.', 'Aligned.', 'Measured.'],
 			subtitle: 'Move from zero to clarity - with fast tech and AI-powered workflows.',
@@ -65,10 +65,10 @@ export const homeContent = {
 			menuToggleLabel: 'Navigationsmenue oeffnen',
 		},
 		hero: {
-			kicker: 'Vibeperform',
+			kicker: 'KI Dienstleister',
 			title: 'Von der Idee zu echtem Mehrwert.',
 			rotatingWords: ['Klar.', 'Schnell.', 'Umsetzbar.'],
-			subtitle: 'Vom Start zur Klarheit - mit schneller Technologie und KI-gestuetzten Workflows.',
+			subtitle: 'Vom Start zur Klarheit - mit schneller Technologie und KI-gestützten Workflows.',
 			primaryCta: 'Jetzt starten',
 			secondaryCta: 'So funktioniert es',
 			secondaryHref: '/vibeperform-astro-page/de/ki-strategie',
@@ -81,27 +81,26 @@ export const homeContent = {
 		},
 		features: {
 			kicker: 'Leistungen',
-			heading: 'Eure Sparringspartner fuer KI & Automatisierung.',
+			heading: 'Wir arbeiten für euch an KI & Automatisierung.',
 			subheading:
-				'Wir uebersetzen Strategie in Umsetzung - mit modularen Angeboten, die innerhalb eurer Organisation skalieren.',
+				'Wir übersetzen Strategie in Umsetzung - mit modularen Angeboten, die euer Teams skalieren.',
 			items: [
 				{
 					title: 'Tempo trifft Klarheit',
 					description: [
-						'Wir liefern schlanke, schoene und funktionale Setups - ohne lange Agenturschleifen.',
+						'Sie bekommen schlanke, funktionale Lösungen mit echtem Mehrwert - ohne lange Agenturschleifen.',
 					],
 				},
 				{
 					title: 'Strategisch durchdacht',
 					description: [
-						'Alles, was wir bauen, basiert auf Produktdenken und klarer Botschaft.',
+						'Sie brauchen KI Lösungen. Wir stellen Ihnen sinnvolle Lösungen am Markt vor. Wenn keine in Frage kommt, haben wir das Know-How eigene Lösungen zu implementieren.',
 					],
 				},
 				{
-					title: 'Builder-Mentalitaet',
+					title: 'Macher-Mentalität',
 					description: [
-						'Wir sind ehemalige Gruender und schnelle Operatoren.',
-						'Wir kennen die Praxis. Wir denken in naechsten Schritten, nicht nur in Deliverables.',
+						'Sie kennen Ihren Alltag. Wir unterstützen in nächsten Schritten, nicht in ewigen Leistungsbeschreibungen. Wir sind Unternehmer und schnelle Umsetzer.',
 					],
 				},
 			],
