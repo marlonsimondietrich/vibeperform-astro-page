@@ -10,7 +10,7 @@ export const workshopsContent = {
 			title: 'From idea to working AI in weeks, not months.',
 			intro:
 				'Our workshops are built for operators, not theorists. We help you spot real AI opportunities in sales, service, and operations – and turn the best one into something you can actually use.',
-			sub: 'No generic slide decks. We work on your process, with your team, toward a solution you could ship.',
+			// sub: 'No generic slide decks. We work on your process, with your team, toward a solution you could ship.',
 			cta: {
 				label: 'Book intro call',
 				href: 'mailto:hello@vibeperform.com',
@@ -121,7 +121,7 @@ export const workshopsContent = {
 			title: 'Von der Idee zur funktionierenden KI in Wochen, nicht Monaten.',
 			intro:
 				'Unsere Formate richten sich an Menschen aus der Praxis, nicht an Theoretiker. Wir identifizieren gemeinsam, wo KI in Vertrieb, Service oder Operations wirklich hilft – und machen daraus etwas Greifbares.',
-			sub: 'Keine Folienschlacht. Wir arbeiten direkt an euren Abläufen, mit eurem Team, auf ein konkretes Ergebnis hin.',
+			// sub: 'Keine Folienschlacht. Wir arbeiten direkt an euren Abläufen, mit eurem Team, auf ein konkretes Ergebnis hin.',
 			cta: {
 				label: 'Gespräch buchen',
 				href: 'mailto:hello@vibeperform.com',
@@ -132,15 +132,15 @@ export const workshopsContent = {
 			heading: 'Warum Teams mit uns arbeiten',
 			bullets: [
 				{
-					title: 'Ihr braucht keine Theorie mehr.',
-					body: 'Ihr braucht Klarheit, wo KI Umsatz bringt, Zeit spart oder Engpässe löst. Genau das machen wir mit euch – in unter einem Tag.',
+					title: 'Weniger Theorie. Mehr Umsetzung.',
+					body: 'Ihr braucht Klarheit, wo KI echten Mehrwert bringt, Zeit spart oder Engpässe löst. Genau das machen wir mit euch – in unter einem Tag.',
 				},
 				{
-					title: 'Wir beraten nicht nur – wir bauen.',
+					title: 'Wir bauen mit euch.',
 					body: 'Wir verbinden Software-Entwicklung mit Lern- und Change-Kompetenz. Heißt: Wir entwerfen die Lösung mit euch – und setzen sie um.',
 				},
 				{
-					title: 'Ihr geht mit klaren Next Steps raus.',
+					title: 'Klarheit. Nächste Schritte. Loslegen.',
 					body: 'Am Ende steht ein priorisierter Use Case mit Nutzen, Erfolgskennzahlen und Umsetzungsplan.',
 				},
 			],
