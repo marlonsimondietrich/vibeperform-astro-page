@@ -1,0 +1,136 @@
+---
+import NavBar from './NavBar.astro';
+import type { WorkshopsContent } from '../data/workshopsContent';
+
+interface Props {
+	content: WorkshopsContent;
+	homeHref: string;
+	alternateLocaleHref: string;
+}
+
+const { content, homeHref, alternateLocaleHref } = Astro.props as Props;
+const { nav, hero, valueSection, offeringsIntro, offerings, proof, team, finalCta } = content;
+---
+
+<div class="flex min-h-screen flex-col bg-white">
+	<NavBar nav={nav} homeHref={homeHref} alternateLocaleHref={alternateLocaleHref} />
+
+	<main class="flex flex-1 flex-col gap-y-24 pb-20">
+		{/* Hero */}
+		<section class="section-spacing">
+			<div class="container-responsive mx-auto max-w-4xl space-y-4 text-center">
+				<p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 sm:text-sm">{hero.kicker}</p>
+				<h1 class="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">{hero.title}</h1>
+				<p class="text-base text-slate-600 sm:text-lg md:text-xl">{hero.intro}</p>
+				{hero.sub ? (
+					<p class="text-sm text-slate-500 md:text-base">{hero.sub}</p>
+				) : null}
+				{hero.cta ? (
+					<a
+						class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-slate-700"
+						href={hero.cta.href}
+					>
+						{hero.cta.label}
+					</a>
+				) : null}
+			</div>
+		</section>
+
+		{/* Value Section */}
+		<section class="section-spacing bg-slate-50">
+			<div class="container-responsive mx-auto max-w-5xl space-y-10">
+				<h2 class="text-center text-2xl font-semibold text-slate-900 md:text-3xl">{valueSection.heading}</h2>
+
+				<div class="grid gap-8 md:grid-cols-3">
+					{valueSection.bullets.map((item) => (
+						<div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+							<h3 class="text-lg font-semibold text-slate-900">{item.title}</h3>
+							<p class="mt-2 text-sm text-slate-600">{item.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		{/* Offerings */}
+		<section class="section-spacing">
+			<div class="container-responsive space-y-12">
+				<div class="mx-auto max-w-3xl space-y-4 text-center">
+					<h2 class="text-2xl font-semibold text-slate-900 md:text-3xl">{offeringsIntro.heading}</h2>
+					<p class="text-slate-600 md:text-lg">{offeringsIntro.body}</p>
+				</div>
+
+				<div class="grid gap-8 md:grid-cols-3">
+					{offerings.map((offering) => (
+						<div class="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+							<h3 class="text-xl font-semibold text-slate-900">{offering.title}</h3>
+							{offering.meta ? (
+								<p class="mt-1 text-xs font-mono uppercase tracking-[0.2em] text-slate-500">{offering.meta}</p>
+							) : null}
+							<p class="mt-4 text-sm text-slate-600">{offering.description}</p>
+
+							{offering.outcomes?.length ? (
+								<ul class="mt-4 space-y-2 text-sm text-slate-700">
+									{offering.outcomes.map((line) => (
+										<li class="flex gap-2">
+											<span class="text-slate-400">•</span>
+											<span>{line}</span>
+										</li>
+									))}
+								</ul>
+							) : null}
+
+							{offering.ctaLabel ? (
+								<div class="mt-6">
+									<span class="inline-block rounded-full bg-slate-900 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.25em] text-white">
+										{offering.ctaLabel}
+									</span>
+								</div>
+							) : null}
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		{/* Proof */}
+		<section class="section-spacing bg-slate-50">
+			<div class="container-responsive space-y-10">
+				<h2 class="text-center text-2xl font-semibold text-slate-900 md:text-3xl">{proof.heading}</h2>
+
+				<div class="grid gap-8 md:grid-cols-3">
+					{proof.items.map((item) => (
+						<div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 text-center">
+							<div class="text-xl font-semibold text-slate-900">{item.stat}</div>
+							<p class="mt-2 text-sm text-slate-600">{item.body}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		{/* Team */}
+		<section class="section-spacing">
+			<div class="container-responsive mx-auto max-w-3xl space-y-4 text-center">
+				<h2 class="text-2xl font-semibold text-slate-900 md:text-3xl">{team.heading}</h2>
+				<p class="text-slate-600 md:text-lg">{team.body}</p>
+			</div>
+		</section>
+
+		{/* Final CTA */}
+		<section class="section-spacing bg-slate-50">
+			<div class="container-responsive">
+				<div class="mx-auto max-w-2xl space-y-4 rounded-3xl bg-white p-8 text-center shadow-sm sm:p-10">
+					<h2 class="text-2xl font-semibold text-slate-900 md:text-3xl">{finalCta.heading}</h2>
+					<p class="text-slate-600 md:text-lg">{finalCta.body}</p>
+					<a
+						class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-slate-700"
+						href={finalCta.button.href}
+					>
+						{finalCta.button.label}
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</div>
