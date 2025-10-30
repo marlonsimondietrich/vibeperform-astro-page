@@ -43,10 +43,9 @@ const bannerSecondaryHref =
 		: ctaBanner.secondaryCta.href;
 ---
 
-<div class="min-h-screen bg-white text-slate-900">
-	<div class="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 pb-16 pt-10 lg:px-10">
-		<NavBar nav={nav} homeHref={homeHref} alternateLocaleHref={alternateLocaleHref} />
-		<main class="flex flex-1 flex-col gap-24 pb-10 pt-12">
+<div class="flex min-h-screen flex-col px-6 py-8">
+	<NavBar nav={nav} homeHref={homeHref} alternateLocaleHref={alternateLocaleHref} />
+	<main class="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-24 py-12">
 			<section id="hero" class="grid gap-12 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
 				<div class="space-y-6">
 					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">{hero.kicker}</p>
@@ -324,7 +323,6 @@ const bannerSecondaryHref =
 			</section>
 		</main>
 	</div>
-</div>
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
