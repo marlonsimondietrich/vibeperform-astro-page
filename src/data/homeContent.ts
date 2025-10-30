@@ -13,7 +13,8 @@ export const homeContent = {
 		},
 		hero: {
 			kicker: 'Vibeperform',
-			title: 'From idea to impact. Fast.',
+			title: 'From idea to impact.',
+			rotatingWords: ['Fast.', 'Aligned.', 'Measured.'],
 			subtitle: 'Move from zero to clarity - with fast tech and AI-powered workflows.',
 			primaryCta: 'Start Building',
 			secondaryCta: 'See how it works',
@@ -65,7 +66,8 @@ export const homeContent = {
 		},
 		hero: {
 			kicker: 'Vibeperform',
-			title: 'Von der Idee zur Wirkung. Schnell.',
+			title: 'Von der Idee zu echtem Mehrwert.',
+			rotatingWords: ['Klar.', 'Schnell.', 'Umsetzbar.'],
 			subtitle: 'Vom Start zur Klarheit - mit schneller Technologie und KI-gestuetzten Workflows.',
 			primaryCta: 'Jetzt starten',
 			secondaryCta: 'So funktioniert es',

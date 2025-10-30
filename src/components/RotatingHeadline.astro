@@ -1,0 +1,50 @@
+---
+interface Props {
+	prefix: string;
+	words?: readonly string[];
+	interval?: number;
+	className?: string;
+}
+
+const props = Astro.props as Props;
+const prefix = props.prefix;
+const words = props.words ?? [];
+const interval = props.interval ?? 2000;
+const className = props.className ?? '';
+const hasWords = words.length > 0;
+const initialWord = hasWords ? words[0] : '';
+---
+<span class:list={[className]} data-rotator-root aria-live="polite">
+	{prefix}
+	{hasWords ? (
+		<>
+			{' '}
+			<span class="inline-block min-w-[6ch]" data-rotator-word>
+				{initialWord}
+			</span>
+		</>
+	) : null}
+</span>
+
+{hasWords && words.length > 1 ? (
+	<script is:inline define:vars={{ words, interval }}>
+		const root = document.currentScript.previousElementSibling;
+		if (!root) {
+			return;
+		}
+		const wordEl = root.querySelector('[data-rotator-word]');
+		if (!wordEl) {
+			return;
+		}
+		const entries = Array.isArray(words) ? words.slice() : [];
+		if (entries.length < 2) {
+			return;
+		}
+		let index = 0;
+
+		window.setInterval(() => {
+			index = (index + 1) % entries.length;
+			wordEl.textContent = entries[index];
+		}, interval);
+	</script>
+) : null}

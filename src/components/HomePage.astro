@@ -1,6 +1,7 @@
 ---
 import Button from './Button.astro';
 import NavBar from './NavBar.astro';
+import RotatingHeadline from './RotatingHeadline.astro';
 import type { HomeContent } from '../data/homeContent';
 
 interface Props {
@@ -25,7 +26,7 @@ const homeHref = currentLocale === 'de' ? `${basePath}/de/` : `${basePath}/`;
 						{hero.kicker}
 					</p>
 					<h1 class="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-						{hero.title}
+						<RotatingHeadline prefix={hero.title} words={hero.rotatingWords} />
 					</h1>
 					<p class="text-base text-slate-600 sm:text-lg md:text-xl">{hero.subtitle}</p>
 					<div class="flex w-full flex-col items-center gap-3 pt-4 sm:flex-row sm:justify-start">
