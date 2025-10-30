@@ -1,0 +1,28 @@
+---
+import '../../styles/global.css';
+import StrategyPage from '../../components/StrategyPage.astro';
+import { strategyContent } from '../../data/strategyContent';
+import { homeContent } from '../../data/homeContent';
+
+const nav = homeContent.de.nav;
+const homeHref = '/vibeperform-astro-page/de/';
+const alternateLocaleHref = '/vibeperform-astro-page/ai-strategy';
+---
+
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{strategyContent.de.metaTitle}</title>
+	</head>
+	<body class="bg-white text-slate-900">
+		<StrategyPage
+			content={strategyContent.de}
+			currentLocale="de"
+			nav={nav}
+			homeHref={homeHref}
+			alternateLocaleHref={alternateLocaleHref}
+		/>
+	</body>
+</html>

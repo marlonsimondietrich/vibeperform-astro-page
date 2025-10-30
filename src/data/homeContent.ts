@@ -3,6 +3,7 @@
 			nav: {
 				brand: 'vibeperform',
 				links: [
+					{ label: 'AI Strategy', href: '/vibeperform-astro-page/ai-strategy' },
 					{ label: 'Workshops', href: '/vibeperform-astro-page/workshops' },
 					{ label: 'About us', href: '/vibeperform-astro-page/about-us' },
 				],
@@ -15,7 +16,7 @@
 				subtitle: 'Move from zero to clarity - with fast tech and AI-powered workflows.',
 				primaryCta: 'Start Building',
 			secondaryCta: 'See how it works',
-			secondaryHref: '/markdown-page',
+			secondaryHref: '/vibeperform-astro-page/ai-strategy',
 		},
 		features: {
 			heading: 'Your sparring partners for AI & automation.',
@@ -46,6 +47,7 @@
 			nav: {
 				brand: 'vibeperform',
 				links: [
+					{ label: 'KI Strategie', href: '/vibeperform-astro-page/de/ki-strategie' },
 					{ label: 'Workshops', href: '/vibeperform-astro-page/de/workshops' },
 					{ label: 'Ueber uns', href: '/vibeperform-astro-page/de/ueber-uns' },
 				],
@@ -58,7 +60,7 @@
 				subtitle: 'Vom Start zur Klarheit - mit schneller Technologie und KI-gestuetzten Workflows.',
 			primaryCta: 'Jetzt starten',
 			secondaryCta: 'So funktioniert es',
-			secondaryHref: '/markdown-page',
+			secondaryHref: '/vibeperform-astro-page/de/ki-strategie',
 		},
 		features: {
 			heading: 'Eure Sparringspartner fuer KI & Automatisierung.',

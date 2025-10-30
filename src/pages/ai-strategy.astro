@@ -1,0 +1,28 @@
+---
+import '../styles/global.css';
+import StrategyPage from '../components/StrategyPage.astro';
+import { strategyContent } from '../data/strategyContent';
+import { homeContent } from '../data/homeContent';
+
+const nav = homeContent.en.nav;
+const homeHref = '/vibeperform-astro-page/';
+const alternateLocaleHref = '/vibeperform-astro-page/de/ki-strategie';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{strategyContent.en.metaTitle}</title>
+	</head>
+	<body class="bg-white text-slate-900">
+		<StrategyPage
+			content={strategyContent.en}
+			currentLocale="en"
+			nav={nav}
+			homeHref={homeHref}
+			alternateLocaleHref={alternateLocaleHref}
+		/>
+	</body>
+</html>
