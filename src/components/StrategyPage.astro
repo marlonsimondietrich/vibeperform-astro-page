@@ -43,10 +43,11 @@ const bannerSecondaryHref =
 		: ctaBanner.secondaryCta.href;
 ---
 
-<div class="flex min-h-screen flex-col px-6 py-8">
+<div class="flex min-h-screen flex-col bg-white">
 	<NavBar nav={nav} homeHref={homeHref} alternateLocaleHref={alternateLocaleHref} />
-	<main class="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-24 py-12">
-			<section id="hero" class="grid gap-12 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
+	<main class="flex flex-1 flex-col gap-y-24 pb-24">
+		<section id="hero" class="section-spacing">
+			<div class="container-responsive grid gap-12 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
 				<div class="space-y-6">
 					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">{hero.kicker}</p>
 					<h1 class="text-4xl font-semibold leading-tight md:text-6xl md:leading-tight">{hero.title}</h1>
@@ -77,9 +78,11 @@ const bannerSecondaryHref =
 						))}
 					</div>
 				</aside>
-			</section>
+			</div>
+		</section>
 
-			<section id={processId} class="space-y-12">
+		<section id={processId} class="section-spacing">
+			<div class="container-responsive space-y-12">
 				<div class="max-w-3xl space-y-4">
 					<p class="inline-flex items-center gap-3 rounded-full bg-slate-100 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-slate-600">
 						<span class="h-2 w-2 rounded-full bg-purple-400" />
@@ -129,9 +132,11 @@ const bannerSecondaryHref =
 						))}
 					</div>
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<section id="value-drivers" class="space-y-10">
+		<section id="value-drivers" class="section-spacing">
+			<div class="container-responsive space-y-10">
 				<div class="max-w-3xl space-y-4">
 					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">02</p>
 					<h2 class="text-3xl font-semibold md:text-4xl">{valueDrivers.title}</h2>
@@ -157,9 +162,11 @@ const bannerSecondaryHref =
 						</details>
 					))}
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<section id="scorecard" class="space-y-10">
+		<section id="scorecard" class="section-spacing bg-slate-50">
+			<div class="container-responsive space-y-10">
 				<div class="max-w-3xl space-y-4">
 					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">03</p>
 					<h2 class="text-3xl font-semibold md:text-4xl">{scorecard.title}</h2>
@@ -204,9 +211,11 @@ const bannerSecondaryHref =
 						</label>
 					))}
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<section id="formats" class="space-y-10">
+		<section id="formats" class="section-spacing">
+			<div class="container-responsive space-y-10">
 				<div class="max-w-3xl space-y-4">
 					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">04</p>
 					<h2 class="text-3xl font-semibold md:text-4xl">{workshopFormats.title}</h2>
@@ -225,9 +234,11 @@ const bannerSecondaryHref =
 						</article>
 					))}
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<section id="assets" class="space-y-10">
+		<section id="assets" class="section-spacing">
+			<div class="container-responsive space-y-10">
 				<div class="max-w-3xl space-y-4">
 					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">05</p>
 					<h2 class="text-3xl font-semibold md:text-4xl">{frameworks.title}</h2>
@@ -240,32 +251,38 @@ const bannerSecondaryHref =
 						</div>
 					))}
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<section class="rounded-3xl border border-slate-200 bg-slate-900 px-8 py-10 text-white shadow-lg">
-				<div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-					<div class="max-w-2xl space-y-4">
-						<h2 class="text-3xl font-semibold md:text-4xl">{ctaBanner.title}</h2>
-						<p class="text-base text-slate-200">{ctaBanner.body}</p>
-					</div>
-					<div class="flex flex-col gap-3 sm:flex-row">
-						<a
-							class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-slate-900 transition hover:bg-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-							href={bannerPrimaryHref}
-						>
-							{ctaBanner.primaryCta.label}
-						</a>
-						<a
-							class="inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-							href={bannerSecondaryHref}
-						>
-							{ctaBanner.secondaryCta.label}
-						</a>
+		<section class="section-spacing">
+			<div class="container-responsive">
+				<div class="rounded-3xl border border-slate-200 bg-slate-900 px-8 py-10 text-white shadow-lg">
+					<div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+						<div class="max-w-2xl space-y-4">
+							<h2 class="text-3xl font-semibold md:text-4xl">{ctaBanner.title}</h2>
+							<p class="text-base text-slate-200">{ctaBanner.body}</p>
+						</div>
+						<div class="flex flex-col gap-3 sm:flex-row">
+							<a
+								class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-slate-900 transition hover:bg-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+								href={bannerPrimaryHref}
+							>
+								{ctaBanner.primaryCta.label}
+							</a>
+							<a
+								class="inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+								href={bannerSecondaryHref}
+							>
+								{ctaBanner.secondaryCta.label}
+							</a>
+						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<section id={contactId} class="space-y-10">
+		<section id={contactId} class="section-spacing">
+			<div class="container-responsive space-y-10">
 				<div class="max-w-3xl space-y-4">
 					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">06</p>
 					<h2 class="text-3xl font-semibold md:text-4xl">{contact.title}</h2>
@@ -320,29 +337,32 @@ const bannerSecondaryHref =
 							: 'We open your email client with a prefilled message. Review and hit send.'}
 					</p>
 				</form>
-			</section>
-		</main>
-	</div>
+			</div>
+		</section>
+	</main>
+</div>
 
-<script>
-	document.addEventListener('DOMContentLoaded', () => {
-		const form = document.getElementById('strategy-contact');
-		if (!form) return;
+<script is:inline>
+	if (typeof window !== 'undefined') {
+		document.addEventListener('DOMContentLoaded', () => {
+			const form = document.getElementById('strategy-contact');
+			if (!form) return;
 
-		form.addEventListener('submit', (event) => {
-			event.preventDefault();
-			const formElement = form;
-			const formData = new FormData(formElement);
-			const entries = Array.from(formData.entries());
-			const lines = entries.map(([key, value]) => {
-				const field = formElement.querySelector(`[name="${key}"]`);
-				const label = field?.dataset.label ?? key;
-				return `${label}: ${value}`;
+			form.addEventListener('submit', (event) => {
+				event.preventDefault();
+				const formElement = form;
+				const formData = new FormData(formElement);
+				const entries = Array.from(formData.entries());
+				const lines = entries.map(([key, value]) => {
+					const field = formElement.querySelector(`[name="${key}"]`);
+					const label = field?.dataset.label ?? key;
+					return `${label}: ${value}`;
+				});
+
+				const subject = ${JSON.stringify(contactSubject)};
+				const body = encodeURIComponent(lines.join('\n\n'));
+				window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${body}`;
 			});
-
-			const subject = ${JSON.stringify(contactSubject)};
-			const body = encodeURIComponent(lines.join('\n\n'));
-			window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${body}`;
 		});
-	});
+	}
 </script>

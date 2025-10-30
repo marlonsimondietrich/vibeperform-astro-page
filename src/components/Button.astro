@@ -1,19 +1,23 @@
 ---
-// Click button, get confetti!
-// Styled by Tailwind :)
 ---
 
 <button
-	class="appearance-none py-2 px-4 bg-purple-500 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75"
+	type="button"
+	class="inline-flex min-h-[2.75rem] w-full items-center justify-center gap-2 rounded-full bg-purple-500 px-5 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 sm:w-auto sm:text-base"
 >
 	<slot />
 </button>
 
-<script>
-	import confetti from 'canvas-confetti';
-	const button = document.body.querySelector('button');
+<script is:inline>
+	if (typeof window !== 'undefined') {
+		const script = document.currentScript;
+		const button = script?.previousElementSibling;
 
-	if (button) {
-		button.addEventListener('click', () => confetti());
+		if (button instanceof HTMLButtonElement) {
+			button.addEventListener('click', async () => {
+				const { default: confetti } = await import('canvas-confetti');
+				confetti();
+			});
+		}
 	}
 </script>

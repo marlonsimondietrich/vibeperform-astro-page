@@ -10,25 +10,145 @@ interface Props {
 }
 
 const { nav, homeHref, alternateLocaleHref } = Astro.props as Props;
+const toggleId = `nav-toggle-${Math.random().toString(36).slice(2, 9)}`;
+const menuId = `nav-menu-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
-<nav class="mx-auto flex w-full max-w-6xl items-center justify-between py-4">
-	<a class="text-base font-semibold uppercase tracking-[0.35em] text-slate-900" href={homeHref}>{nav.brand}</a>
-	<div class="flex items-center gap-6">
+<header class="section-spacing-tight">
+	<nav class="container-responsive flex items-center justify-between gap-4">
+		<a
+			class="text-base font-semibold uppercase tracking-[0.3em] text-slate-900 md:text-lg"
+			href={homeHref}
+		>
+			{nav.brand}
+		</a>
+
+		<div class="hidden items-center gap-6 md:flex">
+			{nav.links.map((link) => (
+				<a
+					class="text-xs font-medium uppercase tracking-[0.25em] text-slate-600 hover:text-slate-900 lg:text-sm"
+					href={link.href}
+				>
+					{link.label}
+				</a>
+			))}
+			<a
+				class="inline-flex min-h-[2.5rem] items-center justify-center rounded-full border border-slate-400 px-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-700 hover:border-slate-600 hover:text-slate-900"
+				href={alternateLocaleHref}
+				aria-label={nav.toggleAriaLabel}
+			>
+				{nav.toggleLabel}
+			</a>
+		</div>
+
+		<button
+			id={toggleId}
+			class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 text-slate-700 hover:border-slate-500 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 md:hidden"
+			type="button"
+			aria-expanded="false"
+			aria-controls={menuId}
+			aria-label={nav.menuToggleLabel}
+		>
+			<span class="sr-only">{nav.menuToggleLabel}</span>
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
+			</svg>
+		</button>
+	</nav>
+
+	<div
+		id={menuId}
+		class="container-responsive mt-3 grid gap-2 rounded-xl border border-slate-200 bg-white p-4 shadow-lg md:hidden"
+		hidden
+	>
 		{nav.links.map((link) => (
 			<a
-				class="text-sm font-medium uppercase tracking-[0.25em] text-slate-600 transition hover:text-slate-900"
+				class="rounded-lg px-3 py-2 text-sm font-medium uppercase tracking-[0.2em] text-slate-700 hover:bg-slate-100"
 				href={link.href}
 			>
 				{link.label}
 			</a>
 		))}
 		<a
-			class="rounded-full border border-slate-400 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-700 transition hover:border-slate-600 hover:text-slate-900"
+			class="mt-2 inline-flex min-h-[2.75rem] items-center justify-center rounded-full border border-slate-400 px-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-700 hover:border-slate-600 hover:text-slate-900"
 			href={alternateLocaleHref}
 			aria-label={nav.toggleAriaLabel}
 		>
 			{nav.toggleLabel}
 		</a>
 	</div>
-</nav>
+</header>
+
+<script is:inline>
+	if (typeof window !== 'undefined') {
+		const toggle = document.getElementById('${toggleId}');
+		const menu = document.getElementById('${menuId}');
+
+		if (toggle && menu) {
+			const focusableSelector =
+				'a[href], button:not([disabled]), [tabindex]:not([-1]), [data-nav-focusable="true"]';
+
+			const update = (expanded) => {
+				toggle.setAttribute('aria-expanded', String(expanded));
+				menu.hidden = !expanded;
+				if (expanded) {
+					const focusable = menu.querySelectorAll(focusableSelector);
+					if (focusable.length) {
+						focusable[0].focus();
+					}
+					document.body.style.overflow = 'hidden';
+				} else {
+					toggle.focus();
+					document.body.style.overflow = '';
+				}
+			};
+
+			const handleKeyDown = (event) => {
+				if (event.key === 'Escape') {
+					update(false);
+					return;
+				}
+
+				if (event.key === 'Tab' && toggle.getAttribute('aria-expanded') === 'true') {
+					const focusable = Array.from(menu.querySelectorAll(focusableSelector));
+					if (!focusable.length) return;
+					const first = focusable[0];
+					const last = focusable[focusable.length - 1];
+					if (event.shiftKey && document.activeElement === first) {
+						event.preventDefault();
+						last.focus();
+					} else if (!event.shiftKey && document.activeElement === last) {
+						event.preventDefault();
+						first.focus();
+					}
+				}
+			};
+
+			const handleOutsideClick = (event) => {
+				if (
+					toggle.getAttribute('aria-expanded') === 'true' &&
+					!menu.contains(event.target) &&
+					!toggle.contains(event.target)
+				) {
+					update(false);
+				}
+			};
+
+			toggle.addEventListener('click', (event) => {
+				event.preventDefault();
+				event.stopPropagation();
+				update(toggle.getAttribute('aria-expanded') !== 'true');
+			});
+			document.addEventListener('keydown', handleKeyDown);
+			document.addEventListener('click', handleOutsideClick);
+
+			const mq = window.matchMedia('(min-width: 768px)');
+			const handleMq = (event) => {
+				if (event.matches) {
+					update(false);
+				}
+			};
+			mq.addEventListener('change', handleMq);
+		}
+	}
+</script>
