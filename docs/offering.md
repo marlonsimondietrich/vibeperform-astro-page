@@ -4,7 +4,7 @@
 
 ## Kontext & Ziel
 
-Wir helfen Entscheider:innen und Teams, **konkrete KI-Anwendungsfälle** zu finden, **lösungsreif zu designen** und **in Wochen als Pilot** live zu bringen.
+Wir helfen Entscheider:innen und Teams, **konkrete KI-Anwendungsfälle** zu finden, **lösungsreif zu designen** und **in Wochen** live zu bringen. Keine Beratung, sondern echte Dienstleistung.
 Fokus: **Vertrieb, Service, Operations**. Immer mit **Compliance, Datenqualität** und **Change** im Blick.
 Ergebnis: **Zeitgewinn, Qualität, Umsatzhebel** – nachweisbar an klaren KPIs.
 
