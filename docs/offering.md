@@ -44,7 +44,7 @@ Ergebnis: **Zeitgewinn, Qualität, Umsatzhebel** – nachweisbar an klaren KPIs.
 
 ---
 
-## 2) Explore-Workshop (1 Tag, vor Ort oder 2×½ Tag remote)
+## 2) Explore-Workshop (1 Tag, vor Ort oder 2 Tage remote)
 
 **Ziel:** **Business-relevante Use-Cases** sauber beschreiben & vergleichen.
 **Ablauf (Auszug):**
@@ -203,3 +203,6 @@ Ergebnis: **Zeitgewinn, Qualität, Umsatzhebel** – nachweisbar an klaren KPIs.
 [hello@vibeperform.com](mailto:hello@vibeperform.com) • [www.vibeperform.com](http://www.vibeperform.com)
 
 > **Ready, steady, deploy.** Von der Idee zur Wirkung – in Wochen, nicht Monaten.
+
+
+//TODO: Ideales Kundenprofil muss sich auf der Webseite wiederfinden.
