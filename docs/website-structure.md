@@ -3,6 +3,9 @@
 Ziel: **Schnell Verständnis schaffen, Vertrauen aufbauen, Conversion treiben.**
 Leitfaden für Aufbau, Reihenfolge, Copy-Elemente und CTAs. Mobile-First, klare Scroll-Story.
 
+Struktur: Klare Sektionen mit einer klaren Nachricht die dem User vermittelt wird.
+Sektionen bauen aufeinander auf und vervollständigen sich gegenseitig und führen den User vom "Allgemeinem" zu "Spezifischem".
+
 ---
 
 ## 0) Navigation (sticky)

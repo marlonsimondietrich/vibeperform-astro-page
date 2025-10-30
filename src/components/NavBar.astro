@@ -48,6 +48,7 @@ const menuId = `nav-menu-${Math.random().toString(36).slice(2, 9)}`;
 			aria-expanded="false"
 			aria-controls={menuId}
 			aria-label={nav.menuToggleLabel}
+			data-nav-toggle
 		>
 			<span class="sr-only">{nav.menuToggleLabel}</span>
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -59,6 +60,9 @@ const menuId = `nav-menu-${Math.random().toString(36).slice(2, 9)}`;
 	<div
 		id={menuId}
 		class="container-responsive mt-3 grid gap-2 rounded-xl border border-slate-200 bg-white p-4 shadow-lg md:hidden"
+		data-open="false"
+		data-nav-menu
+		aria-hidden="true"
 		hidden
 	>
 		{nav.links.map((link) => (
@@ -79,76 +83,257 @@ const menuId = `nav-menu-${Math.random().toString(36).slice(2, 9)}`;
 	</div>
 </header>
 
+<style>
+	[data-nav-menu] {
+		--nav-transition-duration: 220ms;
+		overflow: hidden;
+		max-height: 0;
+		transform: translateY(-0.35rem);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition:
+			max-height var(--nav-transition-duration) ease,
+			opacity var(--nav-transition-duration) ease,
+			transform var(--nav-transition-duration) ease,
+			visibility 0s linear var(--nav-transition-duration);
+	}
+
+	[data-nav-menu][data-open='true'] {
+		max-height: 20rem;
+		opacity: 1;
+		transform: translateY(0);
+		visibility: visible;
+		pointer-events: auto;
+		transition:
+			max-height var(--nav-transition-duration) ease,
+			opacity var(--nav-transition-duration) ease,
+			transform var(--nav-transition-duration) ease;
+	}
+</style>
+
 <script is:inline>
-	if (typeof window !== 'undefined') {
-		const toggle = document.getElementById('${toggleId}');
-		const menu = document.getElementById('${menuId}');
+	(() => {
+		const focusableSelector =
+			'a[href], button:not([disabled]), [tabindex]:not([-1]), [data-nav-focusable="true"]';
 
-		if (toggle && menu) {
-			const focusableSelector =
-				'a[href], button:not([disabled]), [tabindex]:not([-1]), [data-nav-focusable="true"]';
+		const setupNav = (toggle, menu) => {
+			if (!(toggle instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) {
+				return;
+			}
 
-			const update = (expanded) => {
-				toggle.setAttribute('aria-expanded', String(expanded));
-				menu.hidden = !expanded;
-				if (expanded) {
-					const focusable = menu.querySelectorAll(focusableSelector);
-					if (focusable.length) {
-						focusable[0].focus();
-					}
+			if (menu.dataset.navInitialized === 'true') {
+				return;
+			}
+			menu.dataset.navInitialized = 'true';
+
+			let isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+			let previousBodyOverflow = document.body.style.overflow || '';
+
+			const focusElement = (element) => {
+				if (!(element instanceof HTMLElement)) {
+					return;
+				}
+
+				try {
+					element.focus({ preventScroll: true });
+				} catch (_error) {
+					element.focus();
+				}
+			};
+
+			const lockBodyScroll = (lock) => {
+				if (lock) {
+					previousBodyOverflow = document.body.style.overflow || '';
 					document.body.style.overflow = 'hidden';
 				} else {
-					toggle.focus();
-					document.body.style.overflow = '';
+					document.body.style.overflow = previousBodyOverflow;
+				}
+			};
+
+			const openMenu = () => {
+				if (isExpanded) {
+					return;
+				}
+				isExpanded = true;
+
+				menu.hidden = false;
+				menu.dataset.open = 'true';
+				menu.setAttribute('aria-hidden', 'false');
+				toggle.setAttribute('aria-expanded', 'true');
+				lockBodyScroll(true);
+
+				const focusable = menu.querySelectorAll(focusableSelector);
+				if (focusable.length) {
+					window.requestAnimationFrame(() => {
+						focusElement(focusable[0]);
+					});
+				}
+			};
+
+			const closeMenu = (focusToggle = true, force = false) => {
+				if (!isExpanded) {
+					return;
+				}
+				isExpanded = false;
+
+				menu.dataset.open = 'false';
+				menu.setAttribute('aria-hidden', 'true');
+				toggle.setAttribute('aria-expanded', 'false');
+				lockBodyScroll(false);
+
+				const finalize = () => {
+					if (!isExpanded) {
+						menu.hidden = true;
+					}
+				};
+
+				if (force) {
+					finalize();
+				} else {
+					menu.addEventListener(
+						'transitionend',
+						(event) => {
+							if (event.target === menu) {
+								finalize();
+							}
+						},
+						{ once: true }
+					);
+				}
+
+				if (focusToggle) {
+					window.requestAnimationFrame(() => {
+						focusElement(toggle);
+					});
 				}
 			};
 
 			const handleKeyDown = (event) => {
 				if (event.key === 'Escape') {
-					update(false);
+					closeMenu();
 					return;
 				}
 
-				if (event.key === 'Tab' && toggle.getAttribute('aria-expanded') === 'true') {
+				if (event.key === 'Tab' && isExpanded) {
 					const focusable = Array.from(menu.querySelectorAll(focusableSelector));
-					if (!focusable.length) return;
+					if (!focusable.length) {
+						return;
+					}
+
 					const first = focusable[0];
 					const last = focusable[focusable.length - 1];
+
 					if (event.shiftKey && document.activeElement === first) {
 						event.preventDefault();
-						last.focus();
+						focusElement(last);
 					} else if (!event.shiftKey && document.activeElement === last) {
 						event.preventDefault();
-						first.focus();
+						focusElement(first);
 					}
 				}
 			};
 
-			const handleOutsideClick = (event) => {
-				if (
-					toggle.getAttribute('aria-expanded') === 'true' &&
-					!menu.contains(event.target) &&
-					!toggle.contains(event.target)
-				) {
-					update(false);
+			const handleDocumentClick = (event) => {
+				if (!isExpanded) {
+					return;
 				}
+
+				const target = event.target;
+				if (target instanceof Node && (menu.contains(target) || toggle.contains(target))) {
+					return;
+				}
+				closeMenu();
 			};
 
-			toggle.addEventListener('click', (event) => {
+			const handleToggleClick = (event) => {
 				event.preventDefault();
 				event.stopPropagation();
-				update(toggle.getAttribute('aria-expanded') !== 'true');
-			});
-			document.addEventListener('keydown', handleKeyDown);
-			document.addEventListener('click', handleOutsideClick);
-
-			const mq = window.matchMedia('(min-width: 768px)');
-			const handleMq = (event) => {
-				if (event.matches) {
-					update(false);
+				if (isExpanded) {
+					closeMenu();
+				} else {
+					openMenu();
 				}
 			};
-			mq.addEventListener('change', handleMq);
-		}
-	}
+
+			toggle.addEventListener('click', handleToggleClick);
+
+			menu.querySelectorAll('a').forEach((link) => {
+				link.addEventListener('click', () => {
+					closeMenu(false);
+				});
+			});
+
+			document.addEventListener('keydown', handleKeyDown);
+			document.addEventListener('click', handleDocumentClick);
+
+			const mq = window.matchMedia('(min-width: 768px)');
+			const handleBreakpointChange = (event) => {
+				if (event.matches) {
+					closeMenu(false, true);
+				}
+			};
+
+			if (typeof mq.addEventListener === 'function') {
+				mq.addEventListener('change', handleBreakpointChange);
+			} else if (typeof mq.addListener === 'function') {
+				mq.addListener(handleBreakpointChange);
+			}
+
+			const handlePageShow = () => {
+				isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+				if (!isExpanded) {
+					menu.hidden = true;
+					menu.dataset.open = 'false';
+					menu.setAttribute('aria-hidden', 'true');
+				}
+			};
+
+			window.addEventListener('pageshow', handlePageShow);
+
+			let isCleaned = false;
+			const cleanup = () => {
+				if (isCleaned) {
+					return;
+				}
+				isCleaned = true;
+				closeMenu(false, true);
+				lockBodyScroll(false);
+				toggle.removeEventListener('click', handleToggleClick);
+				document.removeEventListener('keydown', handleKeyDown);
+				document.removeEventListener('click', handleDocumentClick);
+				window.removeEventListener('pageshow', handlePageShow);
+
+				if (typeof mq.removeEventListener === 'function') {
+					mq.removeEventListener('change', handleBreakpointChange);
+				} else if (typeof mq.removeListener === 'function') {
+					mq.removeListener(handleBreakpointChange);
+				}
+
+				menu.dataset.navInitialized = 'false';
+			};
+
+			document.addEventListener('astro:before-swap', cleanup, { once: true });
+			window.addEventListener('beforeunload', cleanup, { once: true });
+		};
+
+		const toggles = document.querySelectorAll('[data-nav-toggle]');
+		toggles.forEach((toggleElement) => {
+			if (!(toggleElement instanceof HTMLButtonElement)) {
+				return;
+			}
+
+			const controls = toggleElement.getAttribute('aria-controls');
+			if (!controls) {
+				return;
+			}
+
+			const menu = document.getElementById(controls);
+			if (!menu) {
+				return;
+			}
+
+			setupNav(toggleElement, menu);
+		});
+	})();
 </script>
