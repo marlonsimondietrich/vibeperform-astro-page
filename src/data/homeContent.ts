@@ -13,8 +13,8 @@ export const homeContent = {
 		},
 		hero: {
 			kicker: 'AI service provider',
-			title: 'From idea to impact.',
-			rotatingWords: ['Fast.', 'Aligned.', 'Measured.'],
+			title: '',
+			rotatingWords: ['Understand AI.', 'Seize opportunities.', 'Gain efficiency.'],
 			subtitle: 'Move from zero to clarity - with fast tech and AI-powered workflows.',
 			primaryCta: 'Start Building',
 			secondaryCta: 'See how it works',
@@ -66,7 +66,7 @@ export const homeContent = {
 		},
 		hero: {
 			kicker: 'KI Beratung & Umsetzung',
-			title: ' ',
+			title: '',
 			rotatingWords: ['KI verstehen.', 'Chancen nutzen.', 'Effizienz gewinnen.'],
 			subtitle: 'Wir machen KI & Automatisierung für KMU rund um München umsetzbar.',
 			primaryCta: 'Kontakt aufnehmen',

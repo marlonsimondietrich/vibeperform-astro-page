@@ -1,21 +1,29 @@
 ---
 interface Props {
-	prefix: string;
+	prefix?: string;
 	words?: readonly string[];
 	interval?: number;
 	className?: string;
 }
 
 const props = Astro.props as Props;
-const prefix = props.prefix;
+const prefix = props.prefix?.trim() ?? '';
 const words = props.words ?? [];
 const interval = props.interval ?? 2000;
 const className = props.className ?? '';
 const hasWords = words.length > 0;
 const initialWord = hasWords ? words[0] : '';
+const hasPrefix = prefix.length > 0;
 ---
-<span class:list={[className, 'rotating-headline']} data-rotator-root aria-live="polite">
-	<span class="rotating-headline__prefix">{prefix}</span>
+<span
+	class:list={[className, 'rotating-headline']}
+	data-rotator-root
+	aria-live="polite"
+	data-has-prefix={hasPrefix ? 'true' : 'false'}
+>
+	{hasPrefix ? (
+		<span class="rotating-headline__prefix">{prefix}</span>
+	) : null}
 	{hasWords ? (
 		<span class="rotating-headline__slot" data-rotator-slot>
 			<span
@@ -179,6 +187,10 @@ const initialWord = hasWords ? words[0] : '';
 		display: block; /* bricht auf eigene Zeile */
 		text-align: center; /* mobile: mittig */
 		margin-top: 0.25em; /* optischer Abstand zur vorherigen Zeile */
+	}
+
+	.rotating-headline[data-has-prefix='false'] {
+		margin-top: 0;
 	}
 
 	.rotating-headline__prefix {
