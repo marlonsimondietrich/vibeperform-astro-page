@@ -1,4 +1,5 @@
 ---
+import Footer from './Footer.astro';
 import NavBar from './NavBar.astro';
 import type { StrategyContent, StrategyLocale } from '../data/strategyContent';
 import type { HomeContent } from '../data/homeContent';
@@ -341,6 +342,7 @@ const bannerSecondaryHref =
 			</div>
 		</section>
 	</main>
+	<Footer currentLocale={currentLocale} />
 </div>
 
 <script is:inline>

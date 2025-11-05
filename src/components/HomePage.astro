@@ -1,5 +1,6 @@
 ---
 import Button from "./Button.astro";
+import Footer from "./Footer.astro";
 import NavBar from "./NavBar.astro";
 import PrivacySecuritySection from "./PrivacySecuritySection.astro";
 import RotatingHeadline from "./RotatingHeadline.astro";
@@ -16,7 +17,8 @@ interface Props {
 const { content, currentLocale, alternateLocaleHref } = Astro.props as Props;
 const { nav, hero, features, audience, useCases } = content;
 const basePath = "/vibeperform-astro-page";
-const homeHref = currentLocale === "de" ? `${basePath}/de/` : `${basePath}/`;
+const locale = currentLocale === "de" ? "de" : "en";
+const homeHref = locale === "de" ? `${basePath}/de/` : `${basePath}/`;
 
 const featureIcons = {
   "search-check": SearchCheck,
@@ -227,4 +229,5 @@ const renderFeatureIcon = (key?: keyof typeof featureIcons | string) => {
       badges={["DSGVO-konform", "Privacy by Design", "AV-Vertrag auf Anfrage"]}
     />
   </main>
+  <Footer currentLocale={locale} />
 </div>

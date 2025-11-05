@@ -1,4 +1,5 @@
 ---
+import Footer from './Footer.astro';
 import NavBar from './NavBar.astro';
 import TokenReveal from './TokenReveal.astro';
 import { Lightbulb, Rocket, UserRoundCog } from 'lucide-static';
@@ -8,10 +9,12 @@ interface Props {
 	content: WorkshopsContent;
 	homeHref: string;
 	alternateLocaleHref: string;
+	currentLocale: 'en' | 'de';
 }
 
-const { content, homeHref, alternateLocaleHref } = Astro.props as Props;
+const { content, homeHref, alternateLocaleHref, currentLocale } = Astro.props as Props;
 const { nav, hero, valueSection, offeringsIntro, offerings, proof, team, finalCta } = content;
+const locale = currentLocale === 'de' ? 'de' : 'en';
 
 const valueIcons = {
 	lightbulb: Lightbulb,
@@ -157,4 +160,5 @@ const renderValueIcon = (key?: keyof typeof valueIcons | string) => {
 			</div>
 		</section>
 	</main>
+	<Footer currentLocale={locale} />
 </div>
