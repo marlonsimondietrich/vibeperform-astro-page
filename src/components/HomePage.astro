@@ -3,6 +3,7 @@ import Button from "./Button.astro";
 import NavBar from "./NavBar.astro";
 import PrivacySecuritySection from "./PrivacySecuritySection.astro";
 import RotatingHeadline from "./RotatingHeadline.astro";
+import UseCasesSection from "./UseCasesSection.astro";
 import type { HomeContent } from "../data/homeContent";
 import { SearchCheck, Workflow } from "lucide-static";
 
@@ -13,7 +14,7 @@ interface Props {
 }
 
 const { content, currentLocale, alternateLocaleHref } = Astro.props as Props;
-const { nav, hero, features, audience } = content;
+const { nav, hero, features, audience, useCases } = content;
 const basePath = "/vibeperform-astro-page";
 const homeHref = currentLocale === "de" ? `${basePath}/de/` : `${basePath}/`;
 
@@ -221,6 +222,7 @@ const renderFeatureIcon = (key?: keyof typeof featureIcons | string) => {
         </section>
       ) : null
     }
+    <UseCasesSection data={useCases} />
     <PrivacySecuritySection
       badges={["DSGVO-konform", "Privacy by Design", "AV-Vertrag auf Anfrage"]}
     />
