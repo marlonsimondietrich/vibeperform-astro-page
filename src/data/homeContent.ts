@@ -106,6 +106,18 @@ export const homeContent = {
 				},
 			},
 		},
+		audience: {
+			heading: 'Who our AI offering is for',
+			subheading:
+				'We partner with mid-sized companies that want to noticeably improve their operations with AI and automation.',
+			cards: [
+				{ copy: '<strong>SMBs</strong> with ambition but limited capacity.' },
+				{
+					copy: '<strong>Sales, customer service, and operations teams</strong> as well as <strong>IT and data teams</strong> looking for relief in day-to-day work.',
+				},
+				{ copy: '<strong>Executive and department leaders</strong> who want fast, measurable results.' },
+			],
+		},
 	},
 	de: {
 		nav: {
@@ -213,6 +225,20 @@ export const homeContent = {
 					href: '/vibeperform-astro-page/de/workshops',
 				},
 			},
+		},
+		audience: {
+			heading: 'Für wen unser KI-Angebot gemacht ist',
+			subheading:
+				'Unser Angebot richtet sich an mittelständische Unternehmen, die ihre Abläufe mit KI und Automatisierung spürbar verbessern wollen:',
+			cards: [
+				{ copy: '<strong>KMU</strong> mit Ambition, aber begrenzten Kapazitäten.' },
+				{
+					copy: '<strong>Teams in Vertrieb, Kundenservice und Operations</strong> sowie <strong>IT- und Daten-Teams</strong>, die Entlastung im Tagesgeschäft suchen.',
+				},
+				{
+					copy: '<strong>Geschäftsführungen und Bereichsleitungen</strong>, die schnelle, messbare Ergebnisse sehen wollen.',
+				},
+			],
 		},
 	},
 } as const;

@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { content, currentLocale, alternateLocaleHref } = Astro.props as Props;
-const { nav, hero, features } = content;
+const { nav, hero, features, audience } = content;
 const basePath = "/vibeperform-astro-page";
 const homeHref = currentLocale === "de" ? `${basePath}/de/` : `${basePath}/`;
 
@@ -185,5 +185,40 @@ const renderFeatureIcon = (key?: keyof typeof featureIcons | string) => {
         }
       </div>
     </section>
+    {
+      audience ? (
+        <section class="section-spacing">
+          <div class="container-responsive space-y-8">
+            <div class="space-y-4 text-center">
+              <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">
+                {audience.heading}
+              </h2>
+              {
+                audience.subheading ? (
+                  <p class="mx-auto max-w-3xl text-sm text-slate-600 sm:text-base">
+                    {audience.subheading}
+                  </p>
+                ) : null
+              }
+            </div>
+            <div class="grid-responsive md:grid-cols-3">
+              {
+                audience.cards.map((card, cardIndex) => (
+                  <article
+                    class="h-full rounded-3xl border border-slate-200 bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-8"
+                    key={`audience-card-${cardIndex}`}
+                  >
+                    <p
+                      class="text-base text-slate-700 sm:text-lg"
+                      set:html={card.copy}
+                    />
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+      ) : null
+    }
   </main>
 </div>
