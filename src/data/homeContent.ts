@@ -27,26 +27,70 @@ export const homeContent = {
 			],
 		},
 		features: {
-			kicker: 'Services',
-			heading: 'Your sparring partners for AI & automation.',
+			kicker: 'From idea to adoption.',
+			heading: 'How we work',
 			subheading:
-				'We translate strategy into action with modular offers that scale across your organisation.',
+				'We partner with you end-to-end: first we create clarity, then we build and embed what matters.',
 			items: [
 				{
-					title: 'Speed meets clarity',
-					description: [
-						'We deliver lean, beautiful and functional setups - without long agency loops.',
+					title: '1 – Understand & Prioritize',
+					icon: 'search-check',
+					blocks: [
+						{ type: 'lead', html: '<strong>Workshops that empower your people.</strong>' },
+						{
+							type: 'paragraph',
+							html: 'Together with your team (4–10 employees) we analyze workflows, identify bottlenecks, and prioritize the biggest levers.',
+						},
+						{ type: 'heading', html: '<strong>In facilitated workshops we create clarity:</strong>' },
+						{
+							type: 'list',
+							items: [
+								'Which processes cost you time or quality?',
+								'Where will AI or automation deliver the biggest benefit?',
+								'What does the team really need to work more efficiently?',
+							],
+						},
+						{ type: 'heading', html: '<strong>Afterwards we scan the market:</strong>' },
+						{
+							type: 'paragraph',
+							html: 'If proven solutions already exist that solve your challenge faster or more affordably, we recommend them openly.',
+						},
+						{
+							type: 'paragraph',
+							html: 'If no suitable solution exists, we co-develop a <strong>tailor-made AI or automation solution.</strong>',
+						},
 					],
 				},
 				{
-					title: 'Strategic by design',
-					description: ['Everything we build is rooted in product thinking and clear messaging.'],
-				},
-				{
-					title: 'Builder mindset',
-					description: [
-						'We are former founders and fast operators.',
-						"We've been there. We think in next steps, not just deliverables.",
+					title: '2 – Build & Embed',
+					icon: 'workflow',
+					blocks: [
+						{ type: 'lead', html: '<strong>From idea to lived solution.</strong>' },
+						{
+							type: 'paragraph',
+							html: 'Only once we know what works do we move into delivery — <strong>together with you.</strong>',
+						},
+						{
+							type: 'paragraph',
+							html: 'We develop, test, and anchor solutions in everyday work.',
+						},
+						{ type: 'heading', html: '<strong>That includes:</strong>' },
+						{
+							type: 'list',
+							items: [
+								'close collaboration with business units',
+								'smooth introduction of new tools and workflows',
+								'targeted <strong>change management</strong> so people adopt new processes',
+							],
+						},
+						{
+							type: 'paragraph',
+							html: 'For bespoke solutions we start with a prototype you can test within 7 days.',
+						},
+						{
+							type: 'paragraph',
+							html: '<strong>Our approach:</strong> experiment with use cases quickly to deliver value fast.',
+						},
 					],
 				},
 			],
@@ -86,15 +130,64 @@ export const homeContent = {
 				'Wir verstehen unser Angebot als End-to-End-Leistung: von der Identifikation echter Potenziale bis zur nachhaltigen Umsetzung im Alltag.',
 			items: [
 				{
-					title: '1 - Verstehen & Priorisieren',
-					description: [
-						'Workshops, die Ihre Mitarbeiter befähigen.',
+					title: '1 – Verstehen & Priorisieren',
+					icon: 'search-check',
+					blocks: [
+						{ type: 'lead', html: '<strong>Workshops, die Ihre Mitarbeiter befähigen.</strong>' },
+						{
+							type: 'paragraph',
+							html: 'Gemeinsam mit Ihrem Team (4–10 Mitarbeitende) analysieren wir Abläufe, identifizieren Engpässe und priorisieren die größten Hebel.',
+						},
+						{ type: 'heading', html: '<strong>In moderierten Workshops schaffen wir Klarheit:</strong>' },
+						{
+							type: 'list',
+							items: [
+								'Welche Prozesse kosten Zeit oder Qualität?',
+								'Wo entsteht der größte Nutzen durch KI oder Automatisierung?',
+								'Was braucht das Team wirklich, um effizienter zu arbeiten?',
+							],
+						},
+						{ type: 'heading', html: '<strong>Im Anschluss screenen wir den Markt:</strong>' },
+						{
+							type: 'paragraph',
+							html: 'Wenn es bereits erprobte Lösungen gibt, die Ihre Herausforderung schneller oder günstiger lösen, empfehlen wir diese offen weiter.',
+						},
+						{
+							type: 'paragraph',
+							html: 'Wenn keine passende Lösung existiert, entwickeln wir gemeinsam eine <strong>maßgeschneiderte KI- oder Automatisierungslösung.</strong>',
+						},
 					],
 				},
 				{
-					title: '2 - Umsetzen & Verankern',
-					description: [
-						'Von der Idee zur gelebten Lösung.',
+					title: '2 – Umsetzen & Verankern',
+					icon: 'workflow',
+					blocks: [
+						{ type: 'lead', html: '<strong>Von der Idee zur gelebten Lösung.</strong>' },
+						{
+							type: 'paragraph',
+							html: 'Erst wenn klar ist, was wirkt, gehen wir in die Umsetzung – <strong>gemeinsam mit Ihnen.</strong>',
+						},
+						{
+							type: 'paragraph',
+							html: 'Wir entwickeln, testen und verankern Lösungen im Arbeitsalltag.',
+						},
+						{ type: 'heading', html: '<strong>Dazu gehören:</strong>' },
+						{
+							type: 'list',
+							items: [
+								'enge Zusammenarbeit mit Fachbereichen',
+								'einfache Einführung neuer Tools und Workflows',
+								'gezieltes <strong>Change-Management</strong>, damit Mitarbeitende neue Prozesse auch leben',
+							],
+						},
+						{
+							type: 'paragraph',
+							html: 'Bei personalisierten Lösungen starten wir mit einem Prototypen, den Sie innerhalb von 7 Tagen testen können.',
+						},
+						{
+							type: 'paragraph',
+							html: '<strong>Unser Ansatz:</strong> Use Cases schnell testen, um zügig Mehrwerte zu liefern.',
+						},
 					],
 				},
 			],

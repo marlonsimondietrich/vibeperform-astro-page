@@ -2,11 +2,8 @@
 import Button from "./Button.astro";
 import NavBar from "./NavBar.astro";
 import RotatingHeadline from "./RotatingHeadline.astro";
-import tempoTrifftKlarheitImage from "../data/images/Tempo trifft Klarheit.jpeg";
-import strategischDurchdachtImage from "../data/images/Strategisch durchdacht.jpeg";
-import builderMentalitaetImage from "../data/images/Builder-Mentalitaet.jpeg";
 import type { HomeContent } from "../data/homeContent";
-import { Image } from 'astro:assets';
+import { SearchCheck, Workflow } from "lucide-static";
 
 interface Props {
   content: HomeContent;
@@ -18,11 +15,23 @@ const { content, currentLocale, alternateLocaleHref } = Astro.props as Props;
 const { nav, hero, features } = content;
 const basePath = "/vibeperform-astro-page";
 const homeHref = currentLocale === "de" ? `${basePath}/de/` : `${basePath}/`;
-const featureImages = [
-  tempoTrifftKlarheitImage,
-  strategischDurchdachtImage,
-  builderMentalitaetImage,
-];
+
+const featureIcons = {
+  "search-check": SearchCheck,
+  workflow: Workflow,
+} as const;
+
+const renderFeatureIcon = (key?: keyof typeof featureIcons | string) => {
+  const iconSvg =
+    key && key in featureIcons
+      ? featureIcons[key as keyof typeof featureIcons]
+      : featureIcons["search-check"];
+
+  return iconSvg
+    .replace('class="lucide', 'class="lucide h-10 w-10')
+    .replace('width="24"', 'width="40"')
+    .replace('height="24"', 'height="40"');
+};
 ---
 
 <div class="flex min-h-screen flex-col bg-white">
@@ -81,34 +90,74 @@ const featureImages = [
             ) : null
           }
         </div>
-        <div class="grid-responsive sm:grid-cols-2 xl:grid-cols-3">
+        <div class="grid-responsive md:grid-cols-2">
           {
-            features.items.map((item, index) => {
-              const image = featureImages[index % featureImages.length];
-              return (
-                <article class="flex h-full flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-8">
-                  <div class="space-y-4">
-                    <Image
-                      src={image}
-                      alt={item.title}
-                      loading="lazy"
-                      class="h-36 w-full rounded-2xl object-cover"
-                    />
-                    <h3 class="text-xl font-semibold text-slate-900">
-                      {item.title}
-                    </h3>
-                    <ul class="space-y-2 text-sm text-slate-600 sm:text-base">
-                      {item.description.map((paragraph) => (
-                        <li>{paragraph}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  {/* <div class="mt-6 text-sm font-semibold uppercase tracking-[0.3em] text-purple-500">
-                    {currentLocale === "de" ? "Jetzt entdecken" : "Learn more"}
-                  </div> */}
-                </article>
-              );
-            })
+            features.items.map((item) => (
+              <article
+                class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-8"
+                key={item.title}
+              >
+                <div
+                  class="mb-4 flex justify-center text-slate-500"
+                  aria-hidden="true"
+                  set:html={renderFeatureIcon(item.icon)}
+                />
+                <h3 class="text-lg font-semibold text-slate-900 sm:text-xl">
+                  {item.title}
+                </h3>
+                {
+                  item.blocks?.map((block, blockIndex) => {
+                    if (block.type === "lead") {
+                      return (
+                        <p
+                          class="mt-4 text-sm text-slate-600 sm:text-base"
+                          key={`${item.title}-block-${blockIndex}`}
+                          set:html={block.html}
+                        />
+                      );
+                    }
+
+                    if (block.type === "paragraph") {
+                      return (
+                        <p
+                          class="mt-3 text-sm text-slate-600 sm:text-base"
+                          key={`${item.title}-block-${blockIndex}`}
+                          set:html={block.html}
+                        />
+                      );
+                    }
+
+                    if (block.type === "heading") {
+                      return (
+                        <p
+                          class="mt-6 text-sm font-semibold text-slate-900 sm:text-base"
+                          key={`${item.title}-block-${blockIndex}`}
+                          set:html={block.html}
+                        />
+                      );
+                    }
+
+                    if (block.type === "list") {
+                      return (
+                        <ul
+                          class="mt-3 space-y-2 text-sm text-slate-600 sm:text-base"
+                          key={`${item.title}-block-${blockIndex}`}
+                        >
+                          {block.items.map((entry, entryIndex) => (
+                            <li class="flex gap-2" key={`${item.title}-block-${blockIndex}-entry-${entryIndex}`}>
+                              <span class="text-slate-400">•</span>
+                              <span class="flex-1" set:html={entry} />
+                            </li>
+                          ))}
+                        </ul>
+                      );
+                    }
+
+                    return null;
+                  })
+                }
+              </article>
+            ))
           }
         </div>
       </div>
