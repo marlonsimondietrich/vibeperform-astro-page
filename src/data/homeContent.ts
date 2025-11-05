@@ -65,12 +65,12 @@ export const homeContent = {
 			menuToggleLabel: 'Navigationsmenue oeffnen',
 		},
 		hero: {
-			kicker: 'KI Dienstleister',
-			title: 'Von der Idee zu echtem Mehrwert.',
-			rotatingWords: ['Klar.', 'Schnell.', 'Umsetzbar.'],
-			subtitle: 'Vom Start zur Klarheit - mit schneller Technologie und KI-gestützten Workflows.',
-			primaryCta: 'Jetzt starten',
-			secondaryCta: 'So funktioniert es',
+			kicker: 'KI Beratung & Umsetzung',
+			title: ' ',
+			rotatingWords: ['KI verstehen.', 'Chancen nutzen.', 'Effizienz gewinnen.'],
+			subtitle: 'Wir machen KI & Automatisierung für KMU rund um München umsetzbar.',
+			primaryCta: 'Kontakt aufnehmen',
+			secondaryCta: 'So arbeiten wir',
 			secondaryHref: '/vibeperform-astro-page/de/ki-strategie',
 			callouts: [
 				{ label: 'Tempo', description: 'Wochen statt Monate' },
@@ -80,27 +80,21 @@ export const homeContent = {
 			],
 		},
 		features: {
-			kicker: 'Leistungen',
-			heading: 'Wir arbeiten für euch an KI & Automatisierung.',
+			kicker: 'Von der Idee bis zur Umsetzung.',
+			heading: 'So arbeiten wir',
 			subheading:
-				'Wir übersetzen Strategie in Umsetzung - mit modularen Angeboten, die euer Teams skalieren.',
+				'Wir verstehen unser Angebot als End-to-End-Leistung: von der Identifikation echter Potenziale bis zur nachhaltigen Umsetzung im Alltag.',
 			items: [
 				{
-					title: 'Tempo trifft Klarheit',
+					title: '1 - Verstehen & Priorisieren',
 					description: [
-						'Sie bekommen schlanke, funktionale Lösungen mit echtem Mehrwert - ohne lange Agenturschleifen.',
+						'Workshops, die Ihre Mitarbeiter befähigen.',
 					],
 				},
 				{
-					title: 'Strategisch durchdacht',
+					title: '2 - Umsetzen & Verankern',
 					description: [
-						'Sie brauchen KI Lösungen. Wir stellen Ihnen sinnvolle Lösungen am Markt vor. Wenn keine in Frage kommt, haben wir das Know-How eigene Lösungen zu implementieren.',
-					],
-				},
-				{
-					title: 'Macher-Mentalität',
-					description: [
-						'Sie kennen Ihren Alltag. Wir unterstützen in nächsten Schritten, nicht in ewigen Leistungsbeschreibungen. Wir sind Unternehmer und schnelle Umsetzer.',
+						'Von der Idee zur gelebten Lösung.',
 					],
 				},
 			],
