@@ -94,6 +94,17 @@ export const homeContent = {
 					],
 				},
 			],
+			cta: {
+				heading: 'Sounds like the right approach?',
+				primary: {
+					label: 'Book a free discovery call',
+					href: 'mailto:hello@vibeperform.com',
+				},
+				secondary: {
+					label: 'Explore workshops',
+					href: '/vibeperform-astro-page/workshops',
+				},
+			},
 		},
 	},
 	de: {
@@ -191,6 +202,17 @@ export const homeContent = {
 					],
 				},
 			],
+			cta: {
+				heading: 'Klingt nach dem richtigen Ansatz?',
+				primary: {
+					label: 'Kostenloses Erstgespräch vereinbaren',
+					href: 'mailto:hello@vibeperform.com',
+				},
+				secondary: {
+					label: 'Workshops ansehen',
+					href: '/vibeperform-astro-page/de/workshops',
+				},
+			},
 		},
 	},
 } as const;
