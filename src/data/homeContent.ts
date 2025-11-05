@@ -106,6 +106,52 @@ export const homeContent = {
 				},
 			},
 		},
+		useCases: {
+			kicker: 'Use Cases',
+			heading: 'Proven Use Cases',
+			subheading: 'Fast to launch, easy to measure - drawn from real mid-market projects.',
+			cards: [
+				{
+					category: 'Sales',
+					title: 'Proposal Assistant',
+					description: 'AI combines CRM and email context to draft proposals and follow-ups with clear next steps.',
+					highlights: [
+						'Proposal draft (PDF/Doc)',
+						'Follow-up email (prewritten)',
+						'Open questions & to-dos',
+						'Source log',
+					],
+					toneClass: 'rose',
+					icon: 'proposal',
+				},
+				{
+					category: 'Customer Service',
+					title: 'Knowledge Assistant (RAG)',
+					description: 'Answers with quoted sources from manuals, tickets, and Confluence. Consistent tone, fast, and verifiable.',
+					highlights: [
+						'Draft response with citations',
+						'Relevant passages/links',
+						'Quality check (policy/tone)',
+						'Ticket handover',
+					],
+					toneClass: 'indigo',
+					icon: 'support',
+				},
+				{
+					category: 'Operations',
+					title: 'Document Extraction & Checks',
+					description: 'Extracts fields, validates rules, and syncs to ERP with audit trail and variance report.',
+					highlights: [
+						'Extracted fields (JSON/CSV)',
+						'PO vs. invoice reconciliation',
+						'Variance report',
+						'ERP posting incl. log',
+					],
+					toneClass: 'emerald',
+					icon: 'operations',
+				},
+			],
+		},
 		audience: {
 			heading: 'Who our AI offering is for',
 			subheading:
@@ -237,6 +283,52 @@ export const homeContent = {
 				},
 				{
 					copy: '<strong>Geschäftsführungen und Bereichsleitungen</strong>, die schnelle, messbare Ergebnisse sehen wollen.',
+				},
+			],
+		},
+		useCases: {
+			kicker: 'Use Cases',
+			heading: 'Bewährte Einsatzfelder',
+			subheading: 'Schnell nutzbar, klar messbar – aus realen Projekten im Mittelstand.',
+			cards: [
+				{
+					category: 'Vertrieb',
+					title: 'Angebots-Assistent',
+					description: 'KI bündelt Mail- und CRM-Infos, erstellt Angebotsentwürfe und Follow-ups inklusive offener Punkte.',
+					highlights: [
+						'Angebotsentwurf (PDF/Doc)',
+						'Follow-up-Mail (vorformuliert)',
+						'Offene Fragen & To-dos',
+						'Protokoll der Datenquellen',
+					],
+					toneClass: 'rose',
+					icon: 'proposal',
+				},
+				{
+					category: 'Kundenservice',
+					title: 'Wissens-Assistenz (RAG)',
+					description: 'Antworten mit Quellenzitaten aus Handbuch, Tickets und Confluence. Einheitliche Tonalität, schnell und nachvollziehbar.',
+					highlights: [
+						'Antwortentwurf mit Zitaten',
+						'Relevante Passagen/Links',
+						'Qualitätscheck (Policy/Ton)',
+						'Handover an Ticket-System',
+					],
+					toneClass: 'indigo',
+					icon: 'support',
+				},
+				{
+					category: 'Operations',
+					title: 'Dokumenten-Extraktion & Prüfungen',
+					description: 'Extrahiert Felder, prüft Regeln und schreibt ins ERP – mit Audit-Trail und Abweichungsreport.',
+					highlights: [
+						'Extrahierte Felder (JSON/CSV)',
+						'Abgleich PO ↔ Rechnung',
+						'Abweichungsreport',
+						'ERP-Buchung inkl. Log',
+					],
+					toneClass: 'emerald',
+					icon: 'operations',
 				},
 			],
 		},
