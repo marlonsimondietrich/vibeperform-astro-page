@@ -1,24 +1,36 @@
-	export const homeContent = {
-		en: {
-			nav: {
-				brand: 'vibeperform',
-				links: [
-					{ label: 'Workshops', href: '/vibeperform-astro-page/workshops' },
-					{ label: 'About us', href: '/vibeperform-astro-page/about-us' },
-				],
-				toggleLabel: 'DE',
-				toggleAriaLabel: 'Switch language to German',
-			},
-			hero: {
-				kicker: 'Vibeperform',
-				title: 'From idea to impact. Fast.',
-				subtitle: 'Move from zero to clarity - with fast tech and AI-powered workflows.',
-				primaryCta: 'Start Building',
+export const homeContent = {
+	en: {
+		nav: {
+			brand: 'vibeperform',
+			links: [
+				{ label: 'AI Strategy', href: '/vibeperform-astro-page/ai-strategy' },
+				{ label: 'Workshops', href: '/vibeperform-astro-page/workshops' },
+				{ label: 'About us', href: '/vibeperform-astro-page/about-us' },
+			],
+			toggleLabel: 'DE',
+			toggleAriaLabel: 'Switch language to German',
+			menuToggleLabel: 'Toggle navigation menu',
+		},
+		hero: {
+			kicker: 'AI service provider',
+			title: 'From idea to impact.',
+			rotatingWords: ['Fast.', 'Aligned.', 'Measured.'],
+			subtitle: 'Move from zero to clarity - with fast tech and AI-powered workflows.',
+			primaryCta: 'Start Building',
 			secondaryCta: 'See how it works',
-			secondaryHref: '/markdown-page',
+			secondaryHref: '/vibeperform-astro-page/ai-strategy',
+			callouts: [
+				{ label: 'Speed', description: 'Weeks, not months' },
+				{ label: 'Focus', description: 'Clear roadmaps' },
+				{ label: 'Outcomes', description: 'Measured impact' },
+				{ label: 'Trust', description: 'Compliance ready' },
+			],
 		},
 		features: {
+			kicker: 'Services',
 			heading: 'Your sparring partners for AI & automation.',
+			subheading:
+				'We translate strategy into action with modular offers that scale across your organisation.',
 			items: [
 				{
 					title: 'Speed meets clarity',
@@ -28,9 +40,7 @@
 				},
 				{
 					title: 'Strategic by design',
-					description: [
-						'Everything we build is rooted in product thinking and clear messaging.',
-					],
+					description: ['Everything we build is rooted in product thinking and clear messaging.'],
 				},
 				{
 					title: 'Builder mindset',
@@ -41,45 +51,56 @@
 				},
 			],
 		},
+	},
+	de: {
+		nav: {
+			brand: 'vibeperform',
+			links: [
+				// { label: 'KI Strategie', href: '/vibeperform-astro-page/de/ki-strategie' },
+				{ label: 'Workshops', href: '/vibeperform-astro-page/de/workshops' },
+				{ label: 'Über uns', href: '/vibeperform-astro-page/de/ueber-uns' },
+			],
+			toggleLabel: 'EN',
+			toggleAriaLabel: 'Sprache zu Englisch wechseln',
+			menuToggleLabel: 'Navigationsmenue oeffnen',
 		},
-		de: {
-			nav: {
-				brand: 'vibeperform',
-				links: [
-					{ label: 'Workshops', href: '/vibeperform-astro-page/de/workshops' },
-					{ label: 'Ueber uns', href: '/vibeperform-astro-page/de/ueber-uns' },
-				],
-				toggleLabel: 'EN',
-				toggleAriaLabel: 'Sprache zu Englisch wechseln',
-			},
-			hero: {
-				kicker: 'Vibeperform',
-				title: 'Von der Idee zur Wirkung. Schnell.',
-				subtitle: 'Vom Start zur Klarheit - mit schneller Technologie und KI-gestuetzten Workflows.',
+		hero: {
+			kicker: 'KI Dienstleister',
+			title: 'Von der Idee zu echtem Mehrwert.',
+			rotatingWords: ['Klar.', 'Schnell.', 'Umsetzbar.'],
+			subtitle: 'Vom Start zur Klarheit - mit schneller Technologie und KI-gestützten Workflows.',
 			primaryCta: 'Jetzt starten',
 			secondaryCta: 'So funktioniert es',
-			secondaryHref: '/markdown-page',
+			secondaryHref: '/vibeperform-astro-page/de/ki-strategie',
+			callouts: [
+				{ label: 'Tempo', description: 'Wochen statt Monate' },
+				{ label: 'Fokus', description: 'Klare Roadmaps' },
+				{ label: 'Ergebnis', description: 'Messbarer Impact' },
+				{ label: 'Vertrauen', description: 'Compliance inklusive' },
+			],
 		},
 		features: {
-			heading: 'Eure Sparringspartner fuer KI & Automatisierung.',
+			kicker: 'Leistungen',
+			heading: 'Wir arbeiten für euch an KI & Automatisierung.',
+			subheading:
+				'Wir übersetzen Strategie in Umsetzung - mit modularen Angeboten, die euer Teams skalieren.',
 			items: [
 				{
 					title: 'Tempo trifft Klarheit',
 					description: [
-						'Wir liefern schlanke, schoene und funktionale Setups - ohne lange Agenturschleifen.',
+						'Sie bekommen schlanke, funktionale Lösungen mit echtem Mehrwert - ohne lange Agenturschleifen.',
 					],
 				},
 				{
 					title: 'Strategisch durchdacht',
 					description: [
-						'Alles, was wir bauen, basiert auf Produktdenken und klarer Botschaft.',
+						'Sie brauchen KI Lösungen. Wir stellen Ihnen sinnvolle Lösungen am Markt vor. Wenn keine in Frage kommt, haben wir das Know-How eigene Lösungen zu implementieren.',
 					],
 				},
 				{
-					title: 'Builder-Mentalitaet',
+					title: 'Macher-Mentalität',
 					description: [
-						'Wir sind ehemalige Gruender und schnelle Operatoren.',
-						'Wir kennen die Praxis. Wir denken in naechsten Schritten, nicht nur in Deliverables.',
+						'Sie kennen Ihren Alltag. Wir unterstützen in nächsten Schritten, nicht in ewigen Leistungsbeschreibungen. Wir sind Unternehmer und schnelle Umsetzer.',
 					],
 				},
 			],
