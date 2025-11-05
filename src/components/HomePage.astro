@@ -1,6 +1,7 @@
 ---
 import Button from "./Button.astro";
 import NavBar from "./NavBar.astro";
+import PrivacySecuritySection from "./PrivacySecuritySection.astro";
 import RotatingHeadline from "./RotatingHeadline.astro";
 import type { HomeContent } from "../data/homeContent";
 import { SearchCheck, Workflow } from "lucide-static";
@@ -220,5 +221,8 @@ const renderFeatureIcon = (key?: keyof typeof featureIcons | string) => {
         </section>
       ) : null
     }
+    <PrivacySecuritySection
+      badges={["DSGVO-konform", "Privacy by Design", "AV-Vertrag auf Anfrage"]}
+    />
   </main>
 </div>
