@@ -258,9 +258,9 @@ const approachSection = approachContent[locale];
             ) : null
           }
         </div>
-        <div class="space-y-6 text-left md:max-w-4xl">
+        <div class="space-y-6 text-left md:max-w-4xl md:max-h-[420px] md:overflow-y-auto md:pr-4 md:scroll-smooth">
           {approachSection.steps.map((step) => (
-            <article class="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+            <article class="flex flex-col gap-4 pb-6 last:pb-0 sm:flex-row sm:items-start sm:gap-6">
               <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 text-lg font-semibold text-purple-600">
                 {step.number}
               </span>
