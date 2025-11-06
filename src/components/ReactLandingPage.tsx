@@ -151,7 +151,7 @@ const App: React.FC = () => {
 					<section className="mt-24 sm:mt-32">
 						<div className="mx-auto max-w-2xl text-center">
 							<h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-								Ergebnisse, auf die Sie sich verlassen können
+								Ergebnisse, die Wirkung zeigen
 							</h2>
 						</div>
 						<div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -176,7 +176,7 @@ const App: React.FC = () => {
 
 					<section className="mt-24 sm:mt-32">
 						<div className="mx-auto max-w-3xl text-center">
-							<h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Für wen ist das gedacht?</h2>
+							<h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Für wen ist unser Angebot gemacht?</h2>
 							<p className="mt-4 text-lg text-slate-400">
 								Geschäftsführung, Bereichsleitungen (Vertrieb/Service/Operations), IT/Data-Teams, die <strong className="text-white">schnell belastbare KI-Entscheidungen</strong> treffen wollen.
 							</p>
@@ -202,7 +202,7 @@ const App: React.FC = () => {
 							</ul>
 							<div className="mt-12 flex justify-center">
 								<a
-									href="mailto:hello@vibeperform.com"
+									href="https://calendar.app.google/utFQgw33PwJTiDk56"
 									className="rounded-md bg-purple-600 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 transition-colors duration-200"
 								>
 									Jetzt Kontakt aufnehmen

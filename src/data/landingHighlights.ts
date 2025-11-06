@@ -83,8 +83,8 @@ export const landingHighlightsContent = {
             "Schedule the explore workshop, assign stakeholders, and define data access.",
         },
       ],
-      ctaLabel: "Talk to us",
-      ctaHref: "mailto:hello@vibeperform.com",
+      ctaLabel: "Get in touch",
+      ctaHref: "https://calendar.app.google/utFQgw33PwJTiDk56",
     },
   },
   de: {
@@ -122,7 +122,7 @@ export const landingHighlightsContent = {
       ],
     },
     results: {
-      heading: "Ergebnisse, auf die Sie sich verlassen können",
+      heading: "Ergebnisse, die Wirkung zeigen",
       items: [
         {
           icon: "rocket",
@@ -152,7 +152,7 @@ export const landingHighlightsContent = {
         "Kein Training auf Ihren proprietären Daten ohne ausdrückliche Freigabe.",
     },
     audience: {
-      heading: "Für wen ist das gedacht?",
+      heading: "Für wen ist unser Angebot gemacht?",
       description:
         "Geschäftsführungen, Leitungen in Vertrieb/Service/Operations sowie IT- oder Daten-Teams, die schnelle, belastbare KI-Entscheidungen wollen.",
     },
@@ -162,16 +162,16 @@ export const landingHighlightsContent = {
         {
           title: "Intro-Call (30 Min.)",
           description:
-            "Ziele, Rahmen und Kandidaten-Use-Cases gemeinsam klären.",
+            "Ausgangslage klären und Ziele besprechen.",
         },
         {
           title: "Starttermin festlegen",
           description:
-            "Explore Workshop terminieren, Stakeholder benennen, Datenzugänge definieren.",
+            "Explore Workshop terminieren und Stakeholder benennen.",
         },
       ],
       ctaLabel: "Jetzt Kontakt aufnehmen",
-      ctaHref: "mailto:hello@vibeperform.com",
+      ctaHref: "https://calendar.app.google/utFQgw33PwJTiDk56",
     },
   },
 } as const;

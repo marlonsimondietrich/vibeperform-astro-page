@@ -1,3 +1,5 @@
+const BASE_PATH = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
+
 export const homeContent = {
 	en: {
 		nav: {
@@ -16,9 +18,10 @@ export const homeContent = {
 			title: '',
 			rotatingWords: ['Understand AI.', 'Seize opportunities.', 'Gain efficiency.'],
 			subtitle: 'Move from zero to clarity - with fast tech and AI-powered workflows.',
-			primaryCta: 'Start Building',
-			secondaryCta: 'See how it works',
-			secondaryHref: '/vibeperform-astro-page/ai-strategy',
+			primaryCta: 'Get in touch',
+			primaryHref: 'https://calendar.app.google/utFQgw33PwJTiDk56',
+			secondaryCta: 'How we work',
+			secondaryHref: '#how-we-work',
 			callouts: [
 				{ label: 'Speed', description: 'Weeks, not months' },
 				{ label: 'Focus', description: 'Clear roadmaps' },
@@ -36,11 +39,11 @@ export const homeContent = {
 				heading: 'Sounds like the right approach?',
 				primary: {
 					label: 'Book a free discovery call',
-					href: 'mailto:hello@vibeperform.com',
+					href: 'https://calendar.app.google/utFQgw33PwJTiDk56',
 				},
 				secondary: {
 					label: 'Explore workshops',
-					href: '/vibeperform-astro-page/workshops',
+					href: `${BASE_PATH}/workshops`,
 				},
 			},
 		},
@@ -121,8 +124,9 @@ export const homeContent = {
 			rotatingWords: ['KI verstehen.', 'Chancen nutzen.', 'Effizienz gewinnen.'],
 			subtitle: 'Wir machen KI & Automatisierung für KMU rund um München umsetzbar.',
 			primaryCta: 'Kontakt aufnehmen',
+			primaryHref: 'https://calendar.app.google/utFQgw33PwJTiDk56',
 			secondaryCta: 'So arbeiten wir',
-			secondaryHref: '/vibeperform-astro-page/de/ki-strategie',
+			secondaryHref: '#so-arbeiten-wir',
 			callouts: [
 				{ label: 'Tempo', description: 'Wochen statt Monate' },
 				{ label: 'Fokus', description: 'Klare Roadmaps' },
@@ -140,11 +144,11 @@ export const homeContent = {
 				heading: 'Klingt nach dem richtigen Ansatz?',
 				primary: {
 					label: 'Kostenloses Erstgespräch vereinbaren',
-					href: 'mailto:hello@vibeperform.com',
+					href: 'https://calendar.app.google/utFQgw33PwJTiDk56',
 				},
 				secondary: {
 					label: 'Workshops ansehen',
-					href: '/vibeperform-astro-page/de/workshops',
+					href: `${BASE_PATH}/de/workshops`,
 				},
 			},
 		},
