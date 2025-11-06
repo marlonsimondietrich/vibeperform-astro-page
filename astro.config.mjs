@@ -1,12 +1,14 @@
 // @ts-check
 
 import tailwindcss from '@tailwindcss/vite';
+import react from '@astrojs/react';
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://project-codum.github.io',
 	base: '/vibeperform-astro-page/',
+	integrations: [react()],
 	i18n: {
 		defaultLocale: 'en',
 		locales: ['en', 'de'],
