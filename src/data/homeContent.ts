@@ -5,7 +5,6 @@ export const homeContent = {
 		nav: {
 			brand: 'vibeperform',
 			links: [
-				{ label: 'AI Strategy', href: '/vibeperform-astro-page/ai-strategy' },
 				{ label: 'Workshops', href: '/vibeperform-astro-page/workshops' },
 				{ label: 'About us', href: '/vibeperform-astro-page/about-us' },
 			],
