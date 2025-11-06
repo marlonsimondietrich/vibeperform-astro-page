@@ -6,7 +6,14 @@ import PrivacySecuritySection from "./PrivacySecuritySection.astro";
 import RotatingHeadline from "./RotatingHeadline.astro";
 import UseCasesSection from "./UseCasesSection.astro";
 import type { HomeContent } from "../data/homeContent";
-import { SearchCheck, Workflow } from "lucide-static";
+import {
+  FileText,
+  FlaskConical,
+  Layers,
+  SearchCheck,
+  Users,
+  Workflow,
+} from "lucide-static";
 
 interface Props {
   content: HomeContent;
@@ -14,15 +21,68 @@ interface Props {
   alternateLocaleHref: string;
 }
 
-const { content, currentLocale, alternateLocaleHref } = Astro.props as Props;
-const { nav, hero, features, audience, useCases } = content;
-const basePath = "/vibeperform-astro-page";
-const locale = currentLocale === "de" ? "de" : "en";
-const homeHref = locale === "de" ? `${basePath}/de/` : `${basePath}/`;
-
 const featureIcons = {
   "search-check": SearchCheck,
   workflow: Workflow,
+} as const;
+
+const deliverablesContent = {
+  en: {
+    heading: "What we deliver",
+    subheading: "A clear package for fast, evidence-based AI decisions.",
+    cards: [
+      {
+        title: "Use Case Portfolio",
+        description: "10–20 ideas, top 3 prioritised by value/complexity.",
+        icon: Layers,
+      },
+      {
+        title: "Decision Brief",
+        description: "Business, tech, and risk lenses for every use case.",
+        icon: FileText,
+      },
+      {
+        title: "Prototype/PoC (optional)",
+        description: "Working clickable or data prototype with instrumentation.",
+        icon: FlaskConical,
+      },
+      {
+        title: "Enablement",
+        description:
+          "Your team knows where AI drives impact and how to safeguard quality.",
+        icon: Users,
+      },
+    ],
+  },
+  de: {
+    heading: "Was wir liefern",
+    subheading:
+      "Ein klares Paket für schnelle, fundierte KI-Entscheidungen.",
+    cards: [
+      {
+        title: "Use-Case-Portfolio",
+        description: "10–20 Ideen, Top-3 priorisiert mit Nutzen/Komplexität.",
+        icon: Layers,
+      },
+      {
+        title: "Entscheidungsvorlage",
+        description: "Business-, Tech- und Risiko-Sicht je Use Case.",
+        icon: FileText,
+      },
+      {
+        title: "Prototyp/PoC (optional)",
+        description:
+          "Funktionierender Klick- oder Daten-Prototyp mit Messpunkten.",
+        icon: FlaskConical,
+      },
+      {
+        title: "Enablement",
+        description:
+          "Ihr Team versteht, wo KI wirkt und wie Qualität gesichert wird.",
+        icon: Users,
+      },
+    ],
+  },
 } as const;
 
 const renderFeatureIcon = (key?: keyof typeof featureIcons | string) => {
@@ -36,6 +96,16 @@ const renderFeatureIcon = (key?: keyof typeof featureIcons | string) => {
     .replace('width="24"', 'width="40"')
     .replace('height="24"', 'height="40"');
 };
+
+const renderDeliverableIcon = (iconSvg: string) =>
+  iconSvg.replace('class="lucide', 'class="lucide h-6 w-6 text-purple-600');
+
+const { content, currentLocale, alternateLocaleHref } = Astro.props as Props;
+const { nav, hero, features, audience, useCases } = content;
+const basePath = "/vibeperform-astro-page";
+const locale = currentLocale === "de" ? "de" : "en";
+const homeHref = locale === "de" ? `${basePath}/de/` : `${basePath}/`;
+const deliverablesSection = deliverablesContent[locale];
 ---
 
 <div class="flex min-h-screen flex-col bg-white">
@@ -72,6 +142,32 @@ const renderFeatureIcon = (key?: keyof typeof featureIcons | string) => {
 			</a>
 		) : null}
 	</div>
+      </div>
+    </section>
+    <section class="section-spacing">
+      <div class="container-responsive space-y-10">
+        <div class="mx-auto max-w-3xl space-y-3 text-center">
+          <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">
+            {deliverablesSection.heading}
+          </h2>
+          <p class="text-base text-slate-600 sm:text-lg md:text-xl">
+            {deliverablesSection.subheading}
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {deliverablesSection.cards.map((item) => (
+            <article class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-purple-600">
+                <span class="sr-only">{`${item.title} Icon`}</span>
+                <div aria-hidden="true" set:html={renderDeliverableIcon(item.icon)} />
+              </div>
+              <h3 class="text-lg font-semibold text-slate-900">{item.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                {item.description}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 
