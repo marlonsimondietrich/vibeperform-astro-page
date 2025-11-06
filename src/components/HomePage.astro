@@ -106,6 +106,75 @@ const basePath = "/vibeperform-astro-page";
 const locale = currentLocale === "de" ? "de" : "en";
 const homeHref = locale === "de" ? `${basePath}/de/` : `${basePath}/`;
 const deliverablesSection = deliverablesContent[locale];
+const approachContent = {
+  en: {
+    heading: "Our approach (proven & lean)",
+    steps: [
+      {
+        number: "1",
+        title: "Explore Workshop",
+        subheader: "Find valuable AI ideas",
+        description:
+          "In 1 day (or 2 half days remote) we surface challenges, generate use cases with curated cards and guides, and prioritise together.",
+      },
+      {
+        number: "2",
+        title: "Design Workshop",
+        subheader: "Define the to-be scenario",
+        description:
+          "We deepen 1–3 shortlisted use cases and shape the target state that can actually be delivered.",
+      },
+      {
+        number: "3",
+        title: "Market & Tool Scan",
+        subheader: "Decide build or buy",
+        description:
+          "If battle-tested solutions already exist that solve your challenge faster or at lower cost, we recommend them transparently. If nothing fits, we co-design a tailored AI or automation solution.",
+      },
+      {
+        number: "4",
+        title: "Build Sprint (2–4 weeks)",
+        subheader: "Proof over PowerPoint",
+        description:
+          "In 2–4 weeks we co-develop a first testable prototype. Afterwards we decide on deployment together and support change and rollout so the solution lands in everyday work.",
+      },
+    ],
+  },
+  de: {
+    heading: "Unser Vorgehen (bewährt & schlank)",
+    steps: [
+      {
+        number: "1",
+        title: "Explore Workshop",
+        subheader: "Wertvolle KI-Ideen finden",
+        description:
+          "In 1 Tag (oder 2×½ Tage remote) identifizieren wir Herausforderungen, generieren Use Cases mit Karten/Leitfäden und priorisieren gemeinsam.",
+      },
+      {
+        number: "2",
+        title: "Design Workshop",
+        subheader: "To-Be-Szenario definieren",
+        description:
+          "Wir vertiefen 1–3 Favoriten Use Cases und definieren den umsetzbaren Zielzustand.",
+      },
+      {
+        number: "3",
+        title: "Markt- & Tool-Scan",
+        subheader: "Build-or-Buy entscheiden",
+        description:
+          "Wenn es bereits erprobte Lösungen gibt, die Ihre Herausforderung schneller oder günstiger lösen, empfehlen wir diese offen weiter. Wenn keine passende Lösung existiert, entwickeln wir gemeinsam eine maßgeschneiderte KI- oder Automatisierungslösung.",
+      },
+      {
+        number: "4",
+        title: "Build Sprint (2–4 Wochen)",
+        subheader: "Schneller Proof statt PowerPoint",
+        description:
+          "In 2–4 Wochen entwickeln wir gemeinsam einen ersten testbaren Prototypen. Danach treffen wir die Einführungsentscheidung und begleiten Weiterentwicklung, Change & Rollout, damit die Lösung im Alltag angenommen wird.",
+      },
+    ],
+  },
+} as const;
+const approachSection = approachContent[locale];
 ---
 
 <div class="flex min-h-screen flex-col bg-white">
@@ -170,7 +239,6 @@ const deliverablesSection = deliverablesContent[locale];
         </div>
       </div>
     </section>
-
     <section id="activities" class="section-spacing bg-slate-50">
       <div class="container-responsive space-y-10">
         <div class="space-y-4 text-center md:text-left">
@@ -184,11 +252,27 @@ const deliverablesSection = deliverablesContent[locale];
           </h2>
           {
             features.subheading ? (
-              <p class="max-w-2xl text-sm text-slate-600 sm:text-base">
+              <p class="max-w-2xl [text-wrap:balance] text-sm text-slate-600 sm:text-base">
                 {features.subheading}
               </p>
             ) : null
           }
+        </div>
+        <div class="space-y-6 text-left md:max-w-4xl">
+          {approachSection.steps.map((step) => (
+            <article class="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+              <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 text-lg font-semibold text-purple-600">
+                {step.number}
+              </span>
+              <div class="flex-1 space-y-3">
+                <h3 class="text-xl font-semibold text-slate-900">{step.title}</h3>
+                <p class="text-base font-semibold text-purple-600">
+                  {step.subheader}
+                </p>
+                <p class="text-sm leading-relaxed text-slate-600">{step.description}</p>
+              </div>
+            </article>
+          ))}
         </div>
         <div class="grid-responsive md:grid-cols-2">
           {
@@ -268,7 +352,7 @@ const deliverablesSection = deliverablesContent[locale];
               </h3>
               <div class="flex flex-col gap-3 sm:flex-row sm:justify-center">
                 <a
-                  class="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 sm:text-base"
+                  class="inline-flex items-center justify-center rounded-full bg-purple-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 sm:text-base"
                   href={features.cta.primary.href}
                 >
                   {features.cta.primary.label}
