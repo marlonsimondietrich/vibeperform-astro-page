@@ -1,10 +1,10 @@
 ---
 import Button from "./Button.astro";
 import Footer from "./Footer.astro";
+import LandingHighlights from "./LandingHighlights.astro";
+import LandingTrustSections from "./LandingTrustSections.astro";
 import NavBar from "./NavBar.astro";
-import PrivacySecuritySection from "./PrivacySecuritySection.astro";
 import RotatingHeadline from "./RotatingHeadline.astro";
-import UseCasesSection from "./UseCasesSection.astro";
 import type { HomeContent } from "../data/homeContent";
 import {
   FileText,
@@ -101,7 +101,7 @@ const renderDeliverableIcon = (iconSvg: string) =>
   iconSvg.replace('class="lucide', 'class="lucide h-6 w-6 text-purple-600');
 
 const { content, currentLocale, alternateLocaleHref } = Astro.props as Props;
-const { nav, hero, features, audience, useCases } = content;
+const { nav, hero, features } = content;
 const basePath = "/vibeperform-astro-page";
 const locale = currentLocale === "de" ? "de" : "en";
 const homeHref = locale === "de" ? `${basePath}/de/` : `${basePath}/`;
@@ -213,7 +213,7 @@ const approachSection = approachContent[locale];
 	</div>
       </div>
     </section>
-    <section class="section-spacing">
+    <section class="section-spacing bg-slate-50">
       <div class="container-responsive space-y-10">
         <div class="mx-auto max-w-3xl space-y-3 text-center">
           <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">
@@ -239,7 +239,7 @@ const approachSection = approachContent[locale];
         </div>
       </div>
     </section>
-    <section id="activities" class="section-spacing bg-slate-50">
+    <section id="activities" class="section-spacing bg-white">
       <div class="container-responsive space-y-10">
         <div class="space-y-4 text-center md:text-left">
           <p
@@ -369,45 +369,8 @@ const approachSection = approachContent[locale];
         }
       </div>
     </section>
-    {
-      audience ? (
-        <section class="section-spacing">
-          <div class="container-responsive space-y-8">
-            <div class="space-y-4 text-center">
-              <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">
-                {audience.heading}
-              </h2>
-              {
-                audience.subheading ? (
-                  <p class="mx-auto max-w-3xl text-sm text-slate-600 sm:text-base">
-                    {audience.subheading}
-                  </p>
-                ) : null
-              }
-            </div>
-            <div class="grid-responsive md:grid-cols-3">
-              {
-                audience.cards.map((card, cardIndex) => (
-                  <article
-                    class="h-full rounded-3xl border border-slate-200 bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-8"
-                    key={`audience-card-${cardIndex}`}
-                  >
-                    <p
-                      class="text-base text-slate-700 sm:text-lg"
-                      set:html={card.copy}
-                    />
-                  </article>
-                ))
-              }
-            </div>
-          </div>
-        </section>
-      ) : null
-    }
-    <UseCasesSection data={useCases} />
-    <PrivacySecuritySection
-      badges={["DSGVO-konform", "Privacy by Design", "AV-Vertrag auf Anfrage"]}
-    />
+	<LandingHighlights locale={locale} />
+    <LandingTrustSections locale={locale} />
   </main>
   <Footer currentLocale={locale} />
 </div>
