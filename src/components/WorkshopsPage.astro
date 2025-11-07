@@ -210,22 +210,13 @@ const renderValueIcon = (key?: keyof typeof valueIcons | string) => {
 			</section>
 			) : null}
 
-		{/* Final CTA */}
-		<section class="section-spacing bg-slate-50">
-			<div class="container-responsive">
-				<div class="mx-auto max-w-3xl space-y-6 rounded-3xl bg-white p-8 text-center shadow-sm sm:p-10">
-					<h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">{finalCta.heading}</h2>
-					<p class="text-base text-slate-600 sm:text-lg">{finalCta.body}</p>
-					<Button href={finalCta.button.href}>{finalCta.button.label}</Button>
-				</div>
-			</div>
-		</section>
-
 			{/* Proof */}
 			<section class="section-spacing bg-slate-50">
 				<div class="container-responsive space-y-10">
 				<div class="mx-auto max-w-3xl space-y-4 text-center">
-					<h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">{proof.heading}</h2>
+					<h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">
+						{locale === 'de' ? 'Mehrwerte durch Umsetzung nach den Workshops' : 'Post-workshop outcomes'}
+					</h2>
 				</div>
 
 				<div class="grid gap-6 md:grid-cols-3">
@@ -261,6 +252,15 @@ const renderValueIcon = (key?: keyof typeof valueIcons | string) => {
 			</section>
 
 			{/* Final CTA */}
+			<section class="section-spacing bg-slate-50">
+				<div class="container-responsive">
+					<div class="mx-auto max-w-3xl space-y-6 rounded-3xl bg-white p-8 text-center shadow-sm sm:p-10">
+						<h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">{finalCta.heading}</h2>
+						<p class="text-base text-slate-600 sm:text-lg">{finalCta.body}</p>
+						<Button href={finalCta.button.href}>{finalCta.button.label}</Button>
+					</div>
+				</div>
+			</section>
 	</main>
 	<Footer currentLocale={locale} />
 </div>

@@ -7,14 +7,9 @@ export const workshopsContent = {
 
 		hero: {
 			kicker: 'Workshops',
-			title: 'From idea to working AI in weeks, not months.',
-			intro:
-				'Our workshops are built for operators, not theorists. We help you spot real AI opportunities in sales, service, and operations – and turn the best one into something you can actually use.',
+			title: 'Our Workshops at a Glance',
+			intro: 'Together we identify AI opportunities inside your processes, then build tangible solutions to prove the impact.',
 			// sub: 'No generic slide decks. We work on your process, with your team, toward a solution you could ship.',
-			cta: {
-				label: 'Book intro call',
-				href: 'mailto:hello@vibeperform.com',
-			},
 		},
 
 		valueSection: {
@@ -82,6 +77,47 @@ export const workshopsContent = {
 			},
 		],
 
+		scorecard: {
+			title: 'Interactive scoring canvas',
+			intro:
+				'Choose the scenario that best matches your workshop goals to see how we balance value, feasibility, and readiness.',
+			scenarios: [
+				{
+					name: 'Transform a core process',
+					description:
+						'Ideal when you want to reimagine a mission-critical workflow without disrupting day-to-day operations.',
+					scoreFocus: ['Business impact 45%', 'Feasibility 35%', 'Strategic alignment 20%'],
+					nextMoves: [
+						'Define north star metrics and non-negotiables',
+						'Design pilots with explicit change stories',
+						'Secure data foundations before automation',
+					],
+				},
+				{
+					name: 'Launch a flagship AI product',
+					description:
+						'Perfect for innovation squads that need fast validation loops and stakeholder-ready proof points.',
+					scoreFocus: ['Strategic alignment 40%', 'Business impact 35%', 'Feasibility 25%'],
+					nextMoves: [
+						'Start with a lighthouse use case and hero metric',
+						'Craft demo assets for executive storytelling',
+						'Stand up governance rituals for rapid experimentation',
+					],
+				},
+				{
+					name: 'Scale automation portfolio',
+					description:
+						'Designed for teams juggling multiple automation ideas that need a clear investment order.',
+					scoreFocus: ['Feasibility 40%', 'Business impact 30%', 'Strategic alignment 30%'],
+					nextMoves: [
+						'Bundle similar automations to reduce tech sprawl',
+						'Sequence quick wins before complex builds',
+						'Codify operating models and support runbooks',
+					],
+				},
+			],
+		},
+
 		proof: {
 			heading: 'What happens after the workshop',
 			items: [
@@ -119,16 +155,11 @@ export const workshopsContent = {
 		metaTitle: 'Workshops – Vibeperform',
 		nav: homeContent.de.nav,
 
-		hero: {
-			kicker: 'Workshops',
-			title: 'Von der Idee zur funktionierenden KI in Wochen, nicht Monaten.',
-			intro:
-				'Unsere Formate richten sich an Menschen aus der Praxis, nicht an Theoretiker. Wir identifizieren gemeinsam, wo KI in Vertrieb, Service oder Operations wirklich hilft – und machen daraus etwas Greifbares.',
+			hero: {
+				kicker: 'Workshops',
+				title: 'Unsere Workshops im Überblick',
+				intro: 'In unseren Workshops identifizieren wir gemeinsam KI-Potenziale für eure Prozesse. Darauf aufbauend entwickeln wir greifbare Lösungen.',
 			// sub: 'Keine Folienschlacht. Wir arbeiten direkt an euren Abläufen, mit eurem Team, auf ein konkretes Ergebnis hin.',
-			cta: {
-				label: 'Gespräch buchen',
-				href: 'mailto:hello@vibeperform.com',
-			},
 		},
 
 		valueSection: {
@@ -196,6 +227,47 @@ export const workshopsContent = {
 			},
 		],
 
+		scorecard: {
+			title: 'Interaktive Scoring-Canvas',
+			intro:
+				'Wählt das Szenario, das eure Workshop-Ziele am besten trifft – so gewichten wir Wirkung, Machbarkeit und Readiness.',
+			scenarios: [
+				{
+					name: 'Kernprozess transformieren',
+					description:
+						'Wir identifizieren gemeinsam, wo in euren Arbeitsabläufen Potenzial für KI steckt.',
+					scoreFocus: ['Wo geht Zeit verloren?', 'Wo brechen Abläufe?', 'Wo liegen Chancen für neue Aufträge?'],
+					nextMoves: [
+						'Nordstern-KPIs und No-Gos definieren',
+						'Piloten mit klarer Change-Story planen',
+						'Datenfundament vor der Automatisierung sichern',
+					],
+				},
+				{
+					name: 'Flaggschiff-KI-Produkt starten',
+					description:
+						'Perfekt für Innovationsteams, die schnelle Validierung und überzeugende Proof Points brauchen.',
+					scoreFocus: ['Strategische Passung 40 %', 'Business Impact 35 %', 'Machbarkeit 25 %'],
+					nextMoves: [
+						'Mit einem Lighthouse-Use-Case und klarer KPI starten',
+						'Demo-Artefakte für Stakeholder-Stories bauen',
+						'Governance-Rituale für schnelles Experimentieren etablieren',
+					],
+				},
+				{
+					name: 'Automationsportfolio skalieren',
+					description:
+						'Gedacht für Teams mit vielen Automationsideen, die eine klare Investitionsreihenfolge brauchen.',
+					scoreFocus: ['Machbarkeit 40 %', 'Business Impact 30 %', 'Strategische Passung 30 %'],
+					nextMoves: [
+						'Ähnliche Automationen bündeln statt Tech-Sprawl',
+						'Schnelle Quick Wins vor komplexen Builds priorisieren',
+						'Operating Model und Runbooks früh festhalten',
+					],
+				},
+			],
+		},
+
 		proof: {
 			heading: 'Was nach dem Workshop passiert',
 			items: [
@@ -220,8 +292,8 @@ export const workshopsContent = {
 				'Wir sind ein Team aus Entwicklung und Enablement. Wir bringen KI dorthin, wo sie Wirkung hat – in die tägliche Arbeit. Uns ist wichtig: Umsetzung statt Buzzword, Praxis statt Politik.',
 		},
 
-		finalCta: {
-			heading: 'Wollt ihr sehen, was bei euch möglich ist?',
+			finalCta: {
+				heading: 'Findet heraus, was bei euch möglich ist!',
 			body:
 				'Bucht ein 30-minütiges Gespräch. Wir verstehen euren Kontext und sagen klar, welches Format für euch Sinn ergibt.',
 			button: {
