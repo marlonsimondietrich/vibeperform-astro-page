@@ -11,7 +11,7 @@
 
 - Run `npx astro add react` to install the React renderer; include resulting config and dependency changes in version control.
 - After moving files, update import paths and confirm Tailwind’s content scan picks up all class strings (add safelist entries if purge issues appear).
-- New route lives at `/vibeperform-astro-page/landing-react`; no navigation link is required unless decided later.
+- New route lives at `/landing-react`; no navigation link is required unless decided later.
 
 ## Tasks
 
@@ -28,7 +28,7 @@
   - [x] 3.2 Import `ReactLandingPage` and render it using `<ReactLandingPage client:load />`
   - [x] 3.3 Configure minimal `<html>` and `<head>` metadata (title, lang) to mirror project conventions
 - [ ] 4.0 Verify styling, icons, and Tailwind utilities render correctly on `/landing-react`
-  - [ ] 4.1 Run the dev server and visit `/vibeperform-astro-page/landing-react` to visually confirm parity with the React source
+  - [ ] 4.1 Run the dev server and visit `/landing-react` to visually confirm parity with the React source
   - [ ] 4.2 Inspect Tailwind classes (including bracketed utilities) to ensure none were purged; adjust config safelist if necessary
   - [ ] 4.3 Perform a production build (`npm run build && npm run preview`) to verify the static output renders the React page
 - [ ] 5.0 Document the new route location and any parity considerations with the Astro landing page
