@@ -13,10 +13,10 @@ export const homeContent = {
 			menuToggleLabel: 'Toggle navigation menu',
 		},
 		hero: {
-			kicker: 'AI service provider',
+			kicker: 'AI consulting & implementation',
 			title: '',
 			rotatingWords: ['Understand AI.', 'Seize opportunities.', 'Gain efficiency.'],
-			subtitle: 'Move from zero to clarity - with fast tech and AI-powered workflows.',
+			subtitle: 'We make AI & automation actionable for SMBs around Munich.',
 			primaryCta: 'Get in touch',
 			primaryHref: 'https://calendar.app.google/utFQgw33PwJTiDk56',
 			secondaryCta: 'How we work',
@@ -24,18 +24,18 @@ export const homeContent = {
 			callouts: [
 				{ label: 'Speed', description: 'Weeks, not months' },
 				{ label: 'Focus', description: 'Clear roadmaps' },
-				{ label: 'Outcomes', description: 'Measured impact' },
-				{ label: 'Trust', description: 'Compliance ready' },
+				{ label: 'Results', description: 'Measurable impact' },
+				{ label: 'Trust', description: 'Compliance included' },
 			],
 		},
 		features: {
-			kicker: 'From idea to adoption.',
+			kicker: 'From idea to implementation.',
 			heading: 'How we work',
 			subheading:
-				'We deliver end-to-end: understand the real problems, choose or build the right solutions, embed them in everyday work, and make the impact measurable.',
+				'We provide end-to-end: understand the real problems, choose or build the right solutions, embed them in day-to-day work, and make them measurable.',
 			items: [],
 			cta: {
-				heading: 'Sounds like the right approach?',
+				heading: 'Sound like the right approach?',
 				primary: {
 					label: 'Book a free discovery call',
 					href: 'https://calendar.app.google/utFQgw33PwJTiDk56',
@@ -48,13 +48,13 @@ export const homeContent = {
 		},
 		useCases: {
 			kicker: 'Use Cases',
-			heading: 'Proven Use Cases',
-			subheading: 'Fast to launch, easy to measure - drawn from real mid-market projects.',
+			heading: 'Proven areas of application',
+			subheading: 'Fast to deploy, clearly measurable - drawn from real mid-market projects.',
 			cards: [
 				{
 					category: 'Sales',
 					title: 'Proposal Assistant',
-					description: 'AI combines CRM and email context to draft proposals and follow-ups with clear next steps.',
+					description: 'AI bundles email and CRM info, drafts proposals and follow-ups including open points.',
 					highlights: [
 						'Proposal draft (PDF/Doc)',
 						'Follow-up email (prewritten)',
@@ -67,12 +67,12 @@ export const homeContent = {
 				{
 					category: 'Customer Service',
 					title: 'Knowledge Assistant (RAG)',
-					description: 'Answers with quoted sources from manuals, tickets, and Confluence. Consistent tone, fast, and verifiable.',
+					description: 'Answers with source citations from manuals, tickets, and Confluence. Consistent tone, fast, and traceable.',
 					highlights: [
 						'Draft response with citations',
 						'Relevant passages/links',
 						'Quality check (policy/tone)',
-						'Ticket handover',
+						'Ticket-system handover',
 					],
 					toneClass: 'indigo',
 					icon: 'support',
@@ -80,7 +80,7 @@ export const homeContent = {
 				{
 					category: 'Operations',
 					title: 'Document Extraction & Checks',
-					description: 'Extracts fields, validates rules, and syncs to ERP with audit trail and variance report.',
+					description: 'Extracts fields, checks rules, and writes to the ERP - with audit trail and variance report.',
 					highlights: [
 						'Extracted fields (JSON/CSV)',
 						'PO vs. invoice reconciliation',
@@ -93,9 +93,9 @@ export const homeContent = {
 			],
 		},
 		audience: {
-			heading: 'Who our AI offering is for',
+			heading: 'Who our AI offering is built for',
 			subheading:
-				'We partner with mid-sized companies that want to noticeably improve their operations with AI and automation.',
+				'Our offering is aimed at mid-sized companies that want to noticeably improve their processes with AI and automation:',
 			cards: [
 				{ copy: '<strong>SMBs</strong> with ambition but limited capacity.' },
 				{
