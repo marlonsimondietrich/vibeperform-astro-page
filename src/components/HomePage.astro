@@ -102,7 +102,7 @@ const renderDeliverableIcon = (iconSvg: string) =>
 
 const { content, currentLocale, alternateLocaleHref } = Astro.props as Props;
 const { nav, hero, features } = content;
-const basePath = "/vibeperform-astro-page";
+const basePath = "";
 const locale = currentLocale === "de" ? "de" : "en";
 const homeHref = locale === "de" ? `${basePath}/de/` : `${basePath}/`;
 const deliverablesSection = deliverablesContent[locale];
