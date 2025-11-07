@@ -10,6 +10,8 @@ interface Props {
 }
 
 const { nav, homeHref, alternateLocaleHref } = Astro.props as Props;
+const baseUrl = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
+const logoUrl = `${baseUrl}/vibeperform-logo.png`;
 const toggleId = `nav-toggle-${Math.random().toString(36).slice(2, 9)}`;
 const menuId = `nav-menu-${Math.random().toString(36).slice(2, 9)}`;
 ---
@@ -17,10 +19,19 @@ const menuId = `nav-menu-${Math.random().toString(36).slice(2, 9)}`;
 <header class="section-spacing-tight">
 	<nav class="container-responsive flex items-center justify-between gap-4">
 		<a
-			class="text-base font-semibold uppercase tracking-[0.3em] text-slate-900 md:text-lg"
+			class="inline-flex items-center"
 			href={homeHref}
+			aria-label={nav.brand}
 		>
-			{nav.brand}
+			<img
+				src={logoUrl}
+				alt={nav.brand}
+				class="h-18 w-auto md:h-20"
+				height="40"
+				width="128"
+				loading="eager"
+				decoding="async"
+			/>
 		</a>
 
 		<div class="hidden items-center gap-6 md:flex">
