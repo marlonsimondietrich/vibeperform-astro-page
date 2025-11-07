@@ -1,11 +1,12 @@
 ---
 import '../styles/global.css';
-import WorkshopsPage from '../components/WorkshopsPage.astro';
-import { workshopsContent } from '../data/workshopsContent';
+import StrategyPage from '../components/StrategyPage.astro';
+import { strategyContent } from '../data/strategyContent';
+import { homeContent } from '../data/homeContent';
 
-const content = workshopsContent.en;
+const nav = homeContent.en.nav;
 const homeHref = '/vibeperform-astro-page/';
-const alternateLocaleHref = '/vibeperform-astro-page/de/workshops';
+const alternateLocaleHref = '/vibeperform-astro-page/de/ki-strategie';
 const faviconHref = `${import.meta.env.BASE_URL}favicon.png`;
 ---
 
@@ -14,15 +15,15 @@ const faviconHref = `${import.meta.env.BASE_URL}favicon.png`;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href={faviconHref} />
-		<title>{content.metaTitle}</title>
+		<title>{strategyContent.en.metaTitle}</title>
 	</head>
-
 	<body class="bg-white text-slate-900">
-		<WorkshopsPage
-			content={content}
+		<StrategyPage
+			content={strategyContent.en}
+			currentLocale="en"
+			nav={nav}
 			homeHref={homeHref}
 			alternateLocaleHref={alternateLocaleHref}
-			currentLocale="en"
 		/>
 	</body>
 </html>

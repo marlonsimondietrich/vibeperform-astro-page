@@ -1,66 +1,28 @@
 ---
 import '../../styles/global.css';
-import NavBar from '../../components/NavBar.astro';
-import { homeContent } from '../../data/homeContent';
+import WorkshopsPage from '../../components/WorkshopsPage.astro';
+import { workshopsContent } from '../../data/workshopsContent';
 
-const nav = homeContent.de.nav;
+const content = workshopsContent.de;
 const homeHref = '/vibeperform-astro-page/de/';
 const alternateLocaleHref = '/vibeperform-astro-page/workshops';
+const faviconHref = `${import.meta.env.BASE_URL}favicon.png`;
 ---
 
 <html lang="de">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>Vibeperform Workshops</title>
+		<link rel="icon" type="image/svg+xml" href={faviconHref} />
+		<title>{content.metaTitle}</title>
 	</head>
 
 	<body class="bg-white text-slate-900">
-		<div class="flex min-h-screen flex-col px-6 py-8">
-			<NavBar nav={nav} homeHref={homeHref} alternateLocaleHref={alternateLocaleHref} />
-			<main class="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-12 py-12">
-				<section class="mx-auto w-full max-w-4xl space-y-4 text-center">
-					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">Workshops</p>
-					<h1 class="text-4xl font-semibold md:text-5xl">Massgeschneiderte Lernformate</h1>
-					<p class="text-lg text-slate-600 md:text-xl">
-						Unsere Workshops zeigen Teams, wie KI und Automatisierung echten Mehrwert schaffen.
-						Wir verknuepfen strategische Einordnung mit praktischen Prototypen, damit alle mit klaren To-dos starten.
-					</p>
-				</section>
-				<section class="grid grid-cols-1 gap-8 md:grid-cols-3">
-					<div class="space-y-3 rounded-xl border border-slate-200 p-6 shadow-sm">
-						<h2 class="text-2xl font-semibold">Strategie-Ausrichtung</h2>
-						<p class="text-slate-600">
-							Wir entwickeln mit euch eine Roadmap fuer KI-Einsatz, priorisieren Vorhaben und uebersetzen sie in konkrete Initiativen.
-						</p>
-					</div>
-					<div class="space-y-3 rounded-xl border border-slate-200 p-6 shadow-sm">
-						<h2 class="text-2xl font-semibold">Automation Sprint</h2>
-						<p class="text-slate-600">
-							Die richtigen Personen an einen Tisch, wiederholende Prozesse kartieren und Automationen gemeinsam testen.
-						</p>
-					</div>
-					<div class="space-y-3 rounded-xl border border-slate-200 p-6 shadow-sm">
-						<h2 class="text-2xl font-semibold">Product Co-Lab</h2>
-						<p class="text-slate-600">
-							Mit unseren Buildern Messaging, Wireframes und Go-to-Market-Experimente fuer euer naechstes KI-Feature schaerfen.
-						</p>
-					</div>
-				</section>
-				<section class="rounded-xl bg-slate-50 p-8">
-					<h2 class="text-2xl font-semibold">Bereit fuer einen Termin?</h2>
-					<p class="mt-3 text-slate-600">
-						Teilt eure Ziele und wir schlagen die passende Agenda vor. Remote oder vor Ort moeglich.
-					</p>
-					<a
-						class="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-slate-700"
-						href="mailto:hello@vibeperform.com"
-					>
-						Call buchen
-					</a>
-				</section>
-			</main>
-		</div>
+		<WorkshopsPage
+			content={content}
+			homeHref={homeHref}
+			alternateLocaleHref={alternateLocaleHref}
+			currentLocale="de"
+		/>
 	</body>
 </html>

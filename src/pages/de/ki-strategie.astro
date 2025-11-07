@@ -1,11 +1,12 @@
 ---
 import '../../styles/global.css';
-import AboutPage from '../../components/AboutPage.astro';
-import { aboutContent } from '../../data/aboutContent';
+import StrategyPage from '../../components/StrategyPage.astro';
+import { strategyContent } from '../../data/strategyContent';
+import { homeContent } from '../../data/homeContent';
 
-const content = aboutContent.de;
+const nav = homeContent.de.nav;
 const homeHref = '/vibeperform-astro-page/de/';
-const alternateLocaleHref = '/vibeperform-astro-page/about-us';
+const alternateLocaleHref = '/vibeperform-astro-page/ai-strategy';
 const faviconHref = `${import.meta.env.BASE_URL}favicon.png`;
 ---
 
@@ -14,15 +15,15 @@ const faviconHref = `${import.meta.env.BASE_URL}favicon.png`;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href={faviconHref} />
-		<title>{aboutContent.de.metaTitle}</title>
+		<title>{strategyContent.de.metaTitle}</title>
 	</head>
-
 	<body class="bg-white text-slate-900">
-		<AboutPage
-			content={content}
+		<StrategyPage
+			content={strategyContent.de}
+			currentLocale="de"
+			nav={nav}
 			homeHref={homeHref}
 			alternateLocaleHref={alternateLocaleHref}
-			currentLocale="de"
 		/>
 	</body>
 </html>

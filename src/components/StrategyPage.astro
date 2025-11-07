@@ -1,0 +1,371 @@
+---
+import Footer from './Footer.astro';
+import NavBar from './NavBar.astro';
+import type { StrategyContent, StrategyLocale } from '../data/strategyContent';
+import type { HomeContent } from '../data/homeContent';
+
+type NavContent = HomeContent['nav'];
+
+interface Props {
+	content: StrategyContent;
+	currentLocale: StrategyLocale;
+	nav: NavContent;
+	homeHref: string;
+	alternateLocaleHref: string;
+}
+
+const { content, currentLocale, nav, homeHref, alternateLocaleHref } = Astro.props as Props;
+const { hero, process, valueDrivers, scorecard, workshopFormats, frameworks, ctaBanner, contact } = content;
+
+const processId = currentLocale === 'de' ? 'ablauf' : 'process';
+const contactId = currentLocale === 'de' ? 'kontakt' : 'contact';
+const processBadge = currentLocale === 'de' ? 'Schritt fuer Schritt' : 'Step by step';
+const outputsLabel = currentLocale === 'de' ? 'Ergebnisse' : 'Key outputs';
+const moreLabel = currentLocale === 'de' ? 'Mehr' : 'More';
+const nextMovesLabel = currentLocale === 'de' ? 'Naechste Schritte' : 'Next moves';
+const scrollHint = currentLocale === 'de' ? 'Scrollt durch die drei Phasen' : 'Scroll through the three phases';
+const contactSubject = currentLocale === 'de' ? 'Anfrage KI Strategie' : 'AI Strategy Inquiry';
+
+const heroPrimaryHref =
+	currentLocale === 'de'
+		? hero.primaryCta.href.replace('#contact', `#${contactId}`)
+		: hero.primaryCta.href;
+const heroSecondaryHref =
+	currentLocale === 'de'
+		? hero.secondaryCta.href.replace('#process', `#${processId}`)
+		: hero.secondaryCta.href;
+const bannerPrimaryHref =
+	currentLocale === 'de'
+		? ctaBanner.primaryCta.href.replace('#contact', `#${contactId}`)
+		: ctaBanner.primaryCta.href;
+const bannerSecondaryHref =
+	currentLocale === 'de'
+		? ctaBanner.secondaryCta.href.replace('#process', `#${processId}`)
+		: ctaBanner.secondaryCta.href;
+---
+
+<div class="flex min-h-screen flex-col bg-white">
+	<NavBar nav={nav} homeHref={homeHref} alternateLocaleHref={alternateLocaleHref} />
+	<main class="flex flex-1 flex-col gap-y-24 pb-24">
+		<section id="hero" class="section-spacing">
+			<div class="container-responsive grid gap-12 lg:grid-cols-[1.05fr,0.95fr] lg:items-center">
+				<div class="space-y-6">
+					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">{hero.kicker}</p>
+					<h1 class="text-4xl font-semibold leading-tight md:text-6xl md:leading-tight">{hero.title}</h1>
+					<p class="max-w-xl text-lg text-slate-600 md:text-xl">{hero.subtitle}</p>
+					<div class="flex flex-col gap-4 pt-4 sm:flex-row">
+						<a
+							class="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
+							href={heroPrimaryHref}
+						>
+							{hero.primaryCta.label}
+						</a>
+						<a
+							class="inline-flex items-center justify-center rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-slate-700 transition hover:border-slate-500 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400"
+							href={heroSecondaryHref}
+						>
+							{hero.secondaryCta.label}
+						</a>
+					</div>
+				</div>
+				<aside class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-lg shadow-slate-900/5">
+					<div class="absolute inset-x-12 top-0 h-32 rounded-full bg-purple-200/40 blur-3xl" aria-hidden="true" />
+					<div class="relative flex flex-col gap-6">
+						{hero.highlights.map((highlight) => (
+							<div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:border-purple-300 hover:bg-white">
+								<h3 class="text-lg font-semibold">{highlight.title}</h3>
+								<p class="mt-3 text-sm leading-relaxed text-slate-600">{highlight.description}</p>
+							</div>
+						))}
+					</div>
+				</aside>
+			</div>
+		</section>
+
+		<section id={processId} class="section-spacing">
+			<div class="container-responsive space-y-12">
+				<div class="max-w-3xl space-y-4">
+					<p class="inline-flex items-center gap-3 rounded-full bg-slate-100 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-slate-600">
+						<span class="h-2 w-2 rounded-full bg-purple-400" />
+						{processBadge}
+					</p>
+					<h2 class="text-3xl font-semibold md:text-4xl">{process.title}</h2>
+					<p class="text-base text-slate-600 md:text-lg">{process.intro}</p>
+				</div>
+				<div class="grid gap-10 lg:grid-cols-[0.45fr,1fr]">
+					<aside class="sticky top-32 hidden h-fit flex-col gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6 lg:flex">
+						<p class="text-sm font-semibold uppercase tracking-[0.25em] text-slate-600">{scrollHint}</p>
+						<ul class="space-y-3 text-sm text-slate-600">
+							{process.steps.map((step, index) => (
+								<li class="flex items-center gap-3">
+									<span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-slate-700 shadow-inner">
+										{`0${index + 1}`}
+									</span>
+									<span>{step.title}</span>
+								</li>
+							))}
+						</ul>
+					</aside>
+					<div class="relative h-[70vh] overflow-y-auto rounded-3xl border border-slate-200 bg-white shadow-inner snap-y snap-mandatory">
+						{process.steps.map((step, index) => (
+							<article class="snap-start flex min-h-[70vh] flex-col justify-between gap-8 border-b border-slate-100 p-8 last:border-none">
+								<div class="space-y-4">
+									<span class="inline-flex min-w-[3rem] items-center justify-center rounded-full bg-purple-100 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-purple-600">
+										{`0${index + 1}`}
+									</span>
+									<h3 class="text-2xl font-semibold text-slate-900">{step.title}</h3>
+									<p class="text-base leading-relaxed text-slate-600">{step.description}</p>
+								</div>
+								<div class="space-y-3 rounded-2xl bg-slate-50 p-6">
+									<p class="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+										{outputsLabel}
+									</p>
+									<ul class="space-y-2 text-sm text-slate-700">
+										{step.deliverables.map((item) => (
+											<li class="flex gap-3">
+												<span aria-hidden="true" class="mt-2 h-1.5 w-1.5 rounded-full bg-purple-400" />
+												<span>{item}</span>
+											</li>
+										))}
+									</ul>
+								</div>
+							</article>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="value-drivers" class="section-spacing">
+			<div class="container-responsive space-y-10">
+				<div class="max-w-3xl space-y-4">
+					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">02</p>
+					<h2 class="text-3xl font-semibold md:text-4xl">{valueDrivers.title}</h2>
+					<p class="text-base text-slate-600 md:text-lg">{valueDrivers.intro}</p>
+				</div>
+				<div class="space-y-4">
+					{valueDrivers.drivers.map((driver, index) => (
+						<details class="group overflow-hidden rounded-3xl border border-slate-200 bg-white p-0 shadow-sm transition open:shadow-lg">
+							<summary class="flex cursor-pointer items-center justify-between gap-6 px-6 py-5 text-left text-lg font-semibold text-slate-900 marker:text-transparent">
+								<div class="flex items-center gap-4">
+									<span class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-sm font-semibold text-slate-700">
+										{index + 1}
+									</span>
+									<span>{driver.name}</span>
+								</div>
+								<span class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400 transition group-open:rotate-45">
+									{moreLabel}
+								</span>
+							</summary>
+							<div class="border-t border-slate-200 px-6 py-5 text-sm leading-relaxed text-slate-600">
+								{driver.description}
+							</div>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section id="scorecard" class="section-spacing bg-slate-50">
+			<div class="container-responsive space-y-10">
+				<div class="max-w-3xl space-y-4">
+					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">03</p>
+					<h2 class="text-3xl font-semibold md:text-4xl">{scorecard.title}</h2>
+					<p class="text-base text-slate-600 md:text-lg">{scorecard.intro}</p>
+				</div>
+				<div class="grid gap-6 lg:grid-cols-3">
+					{scorecard.scenarios.map((scenario, index) => (
+						<label class="group relative block cursor-pointer overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-lg">
+							<input
+								type="radio"
+								name="strategy-scenario"
+								class="peer absolute inset-0 h-full w-full cursor-pointer opacity-0"
+								checked={index === 0}
+							/>
+							<div class="flex items-center justify-between gap-4">
+								<p class="text-lg font-semibold text-slate-900">{scenario.name}</p>
+								<span class="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-slate-600 peer-checked:bg-purple-100 peer-checked:text-purple-700">
+									{`#${index + 1}`}
+								</span>
+							</div>
+							<p class="mt-3 text-sm leading-relaxed text-slate-600">{scenario.description}</p>
+							<div class="mt-6 grid gap-2">
+								{scenario.scoreFocus.map((focus) => (
+									<div class="flex items-center justify-between rounded-2xl border border-transparent bg-slate-50 px-3 py-2 text-sm text-slate-600 transition peer-checked:border-purple-200 peer-checked:bg-purple-50 peer-checked:text-purple-700">
+										<span>{focus}</span>
+									</div>
+								))}
+							</div>
+							<div class="mt-6 hidden flex-col gap-3 rounded-2xl border border-purple-200 bg-purple-50 p-4 text-sm text-slate-700 peer-checked:flex">
+								<p class="text-xs font-semibold uppercase tracking-[0.25em] text-purple-700">
+									{nextMovesLabel}
+								</p>
+								<ul class="space-y-2">
+									{scenario.nextMoves.map((move) => (
+										<li class="flex gap-3">
+											<span aria-hidden="true" class="mt-2 h-1.5 w-1.5 rounded-full bg-purple-500" />
+											<span>{move}</span>
+										</li>
+									))}
+								</ul>
+							</div>
+						</label>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section id="formats" class="section-spacing">
+			<div class="container-responsive space-y-10">
+				<div class="max-w-3xl space-y-4">
+					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">04</p>
+					<h2 class="text-3xl font-semibold md:text-4xl">{workshopFormats.title}</h2>
+					<p class="text-base text-slate-600 md:text-lg">{workshopFormats.description}</p>
+				</div>
+				<div class="grid gap-6 lg:grid-cols-3">
+					{workshopFormats.modules.map((module) => (
+						<article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-lg">
+							<div class="flex items-center justify-between">
+								<h3 class="text-lg font-semibold text-slate-900">{module.name}</h3>
+								<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-slate-600">
+									{module.duration}
+								</span>
+							</div>
+							<p class="mt-4 text-sm leading-relaxed text-slate-600">{module.description}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section id="assets" class="section-spacing">
+			<div class="container-responsive space-y-10">
+				<div class="max-w-3xl space-y-4">
+					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">05</p>
+					<h2 class="text-3xl font-semibold md:text-4xl">{frameworks.title}</h2>
+				</div>
+				<div class="grid gap-6 md:grid-cols-3">
+					{frameworks.items.map((item) => (
+						<div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-lg">
+							<h3 class="text-lg font-semibold text-slate-900">{item.title}</h3>
+							<p class="mt-3 text-sm leading-relaxed text-slate-600">{item.description}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="section-spacing">
+			<div class="container-responsive">
+				<div class="rounded-3xl border border-slate-200 bg-slate-900 px-8 py-10 text-white shadow-lg">
+					<div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+						<div class="max-w-2xl space-y-4">
+							<h2 class="text-3xl font-semibold md:text-4xl">{ctaBanner.title}</h2>
+							<p class="text-base text-slate-200">{ctaBanner.body}</p>
+						</div>
+						<div class="flex flex-col gap-3 sm:flex-row">
+							<a
+								class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-slate-900 transition hover:bg-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+								href={bannerPrimaryHref}
+							>
+								{ctaBanner.primaryCta.label}
+							</a>
+							<a
+								class="inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+								href={bannerSecondaryHref}
+							>
+								{ctaBanner.secondaryCta.label}
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id={contactId} class="section-spacing">
+			<div class="container-responsive space-y-10">
+				<div class="max-w-3xl space-y-4">
+					<p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">06</p>
+					<h2 class="text-3xl font-semibold md:text-4xl">{contact.title}</h2>
+					<p class="text-base text-slate-600 md:text-lg">{contact.description}</p>
+				</div>
+				<form
+					id="strategy-contact"
+					data-subject={contactSubject}
+					class="grid gap-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg shadow-slate-900/10"
+				>
+					<div class="grid gap-6 md:grid-cols-2">
+						{contact.fields.slice(0, 3).map((field) => (
+							<label class="flex flex-col gap-2 text-sm text-slate-700">
+								<span class="font-semibold uppercase tracking-[0.25em] text-slate-500">
+									{field.label}
+								</span>
+								<input
+									name={field.name}
+									type={field.type}
+									autocomplete={field.autocomplete}
+									required
+									data-label={field.label}
+									class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+								/>
+							</label>
+						))}
+					</div>
+					{contact.fields
+						.filter((field) => field.type === 'textarea')
+						.map((field) => (
+							<label class="flex flex-col gap-2 text-sm text-slate-700">
+								<span class="font-semibold uppercase tracking-[0.25em] text-slate-500">
+									{field.label}
+								</span>
+								<textarea
+									name={field.name}
+									rows={5}
+									required
+									data-label={field.label}
+									class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+								/>
+							</label>
+						))}
+					<button
+						type="submit"
+						class="inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500 md:w-auto"
+					>
+						{contact.submitLabel}
+					</button>
+					<p class="text-xs text-slate-500">
+						{currentLocale === 'de'
+							? 'Wir oeffnen eure E-Mail App mit einer vorbefuellten Nachricht. Einfach pruefen und absenden.'
+							: 'We open your email client with a prefilled message. Review and hit send.'}
+					</p>
+				</form>
+			</div>
+		</section>
+	</main>
+	<Footer currentLocale={currentLocale} />
+</div>
+
+<script is:inline>
+	if (typeof window !== 'undefined') {
+		document.addEventListener('DOMContentLoaded', () => {
+			const form = document.getElementById('strategy-contact');
+			if (!form) return;
+
+			form.addEventListener('submit', (event) => {
+				event.preventDefault();
+				const formElement = form;
+				const formData = new FormData(formElement);
+				const entries = Array.from(formData.entries());
+				const lines = entries.map(([key, value]) => {
+					const field = formElement.querySelector(`[name="${key}"]`);
+					const label = field?.dataset.label ?? key;
+					return `${label}: ${value}`;
+				});
+
+				const subject = form.dataset.subject ?? '';
+				const body = encodeURIComponent(lines.join('\n\n'));
+				window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${body}`;
+			});
+		});
+	}
+</script>

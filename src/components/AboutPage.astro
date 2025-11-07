@@ -1,0 +1,135 @@
+---
+import Button from './Button.astro';
+import Footer from './Footer.astro';
+import NavBar from './NavBar.astro';
+import type { AboutContent } from '../data/aboutContent';
+
+interface Props {
+	content: AboutContent;
+	homeHref: string;
+	alternateLocaleHref: string;
+	currentLocale: 'en' | 'de';
+}
+
+const { content, homeHref, alternateLocaleHref, currentLocale } = Astro.props as Props;
+const { nav, hero, approach, team, why, connect } = content;
+const approachLabel = currentLocale === 'de' ? 'Ansatz' : 'Approach';
+const assetBaseUrl = import.meta.env.BASE_URL ?? '/';
+---
+
+<div class="flex min-h-screen flex-col bg-white">
+	<NavBar nav={nav} homeHref={homeHref} alternateLocaleHref={alternateLocaleHref} />
+
+	<main class="flex flex-1 flex-col gap-y-24 pb-20">
+		<section class="section-spacing">
+			<div class="container-responsive mx-auto max-w-4xl space-y-6 text-left">
+				<p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 sm:text-sm">{hero.kicker}</p>
+				<h1 class="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">{hero.title}</h1>
+				<p class="text-base text-slate-600 sm:text-lg md:text-xl">{hero.intro}</p>
+				<p class="text-base font-semibold text-slate-900 sm:text-lg">{hero.promise}</p>
+			</div>
+		</section>
+
+		<section class="section-spacing bg-slate-50">
+			<div class="container-responsive space-y-8">
+				<div class="space-y-2">
+					<p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 sm:text-sm">{team.kicker}</p>
+					<h2 class="text-3xl font-semibold text-slate-900 md:text-4xl">{team.title}</h2>
+				</div>
+				<div class="grid gap-6 md:grid-cols-2">
+					{team.members.map((member) => (
+						<article
+							class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-8"
+							key={member.name}
+						>
+							<div class="flex items-start gap-4">
+								{member.image ? (
+									<img
+										class="h-50 w-45 rounded-2xl object-cover"
+										src={`${assetBaseUrl}${member.image.src}`}
+										alt={member.image.alt}
+										loading="lazy"
+										width="160"
+										height="160"
+									/>
+								) : (
+									<div class="h-20 w-20 rounded-2xl bg-slate-100" aria-hidden="true"></div>
+								)}
+								<header class="space-y-1">
+									<h3 class="text-2xl font-semibold text-slate-900">{member.name}</h3>
+									<p class="text-sm italic text-slate-500">{member.tagline}</p>
+								</header>
+							</div>
+							<div class="mt-6 flex flex-1 flex-col space-y-3 text-slate-600">
+								{member.paragraphs.map((paragraph, index) => (
+									<p key={`${member.name}-paragraph-${index}`}>{paragraph}</p>
+								))}
+							</div>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="section-spacing">
+			<div class="container-responsive mx-auto max-w-4xl space-y-6">
+				<div class="space-y-3">
+					<p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 sm:text-sm">{approachLabel}</p>
+					<h2 class="text-3xl font-semibold text-slate-900 md:text-4xl">{approach.title}</h2>
+					<p class="text-lg text-slate-600">{approach.intro}</p>
+				</div>
+				<ul class="list-disc space-y-3 pl-5 text-base text-slate-600">
+					{approach.steps.map((step) => (
+						<li key={step}>{step}</li>
+					))}
+				</ul>
+				<p class="text-base font-semibold text-slate-900">{approach.closing}</p>
+			</div>
+		</section>
+
+		<section class="section-spacing bg-slate-50">
+			<div class="container-responsive">
+				<div class="space-y-5 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+					<p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 sm:text-sm">{why.kicker}</p>
+					<h2 class="text-3xl font-semibold text-slate-900 md:text-4xl">{why.title}</h2>
+					<div class="space-y-4 text-base text-slate-600">
+						{why.paragraphs.map((paragraph, index) => (
+							<p key={`${why.title}-paragraph-${index}`}>{paragraph}</p>
+						))}
+					</div>
+					<p class="text-base font-semibold text-slate-900">{why.highlight}</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section-spacing">
+			<div class="container-responsive">
+				<div class="space-y-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm sm:p-12">
+					<p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 sm:text-sm">{connect.kicker}</p>
+					<h2 class="text-3xl font-semibold text-slate-900 md:text-4xl">{connect.title}</h2>
+					<blockquote class="border-l-4 border-purple-200 pl-5 text-lg text-slate-700">{connect.quote}</blockquote>
+					<p class="text-base text-slate-600">{connect.description}</p>
+					<div class="flex flex-col gap-4 pt-2 sm:flex-row">
+						{connect.buttons.map((button) =>
+							button.variant === 'primary' ? (
+								<Button href={button.href} key={button.label}>
+									{button.label}
+								</Button>
+							) : (
+								<a
+									key={button.label}
+									class="inline-flex min-h-[2.75rem] w-full items-center justify-center rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900 sm:w-auto sm:text-base"
+									href={button.href}
+								>
+									{button.label}
+								</a>
+							)
+						)}
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<Footer currentLocale={currentLocale} />
+</div>

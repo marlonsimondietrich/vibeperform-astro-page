@@ -39,7 +39,10 @@ src/
     HomePage.astro      # Landing page shell (hero + features) that consumes localised content
     NavBar.astro        # Shared navigation bar used across every page
   data/
-    homeContent.ts      # Locale-specific strings and navigation definitions
+    homeContent.ts      # Locale-specific navigation + landing page copy
+    strategyContent.ts  # Detailed content for the AI strategy offering
+    aboutContent.ts     # Localised About page copy blocks
+    workshopsContent.ts # Localised Workshops page copy blocks
   pages/
     index.astro         # English landing page
     de/index.astro      # German landing page
@@ -70,16 +73,19 @@ Astro routes map 1:1 to files (`src/pages/**/*.astro`). English pages live at `/
 - Buttons and links use shared patterns (`Button.astro` and NavBar classes). Update those components first so colour tweaks cascade everywhere.
 
 ## 6. Managing Text & Localisation
-- Centralise shared copy in `src/data/homeContent.ts`. Each locale has a `nav`, `hero`, and `features` block. Update copy here instead of editing multiple components.
+- Centralise page copy in the `src/data` directory:
+  - `homeContent.ts` drives the navigation and home page hero/features.
+  - `strategyContent.ts` feeds the AI strategy detail component.
+  - `aboutContent.ts` and `workshopsContent.ts` export locale-keyed objects (`en`/`de`) that power the About and Workshops pages.
+- Each content module exports both the literal data (`as const`) and derived TypeScript types to catch missing fields at build time. Reuse these types when wiring props into components.
 - Honour the structure:
   - `nav.links` controls both label text and target URLs. Use absolute URLs that include `/vibeperform-astro-page` so navigation works in production.
-  - `hero` strings feed the landing page hero via `HomePage.astro`.
-  - `features.items` is an array; keep copy concise to preserve layout on mobile.
-- For page-specific content (e.g., `/workshops`), edit the relevant `.astro` file. Maintain parity between English and German versions to keep toggles symmetrical.
+  - Locale objects should expose the same keys (`hero`, `values`, `cta`, etc.) across languages to keep toggles symmetrical.
+- When adding or updating copy, edit the relevant data module rather than the `.astro` page. Rendering files should only orchestrate layout and pass the correct locale slice.
 - When adding a new locale:
   1. Duplicate the page structure under a new directory (e.g., `src/pages/fr/`).
-  2. Extend `homeContent` with the new locale key.
-  3. Provide translations for every navigation label and feature string before exposing the locale toggle.
+  2. Extend each relevant content module with the new locale key.
+  3. Provide translations for every navigation label, CTA, and section string before exposing the locale toggle.
 
 ## 7. Deployment Guidance
 - The site expects the `/vibeperform-astro-page` prefix. If you deploy elsewhere, update:
@@ -87,7 +93,7 @@ Astro routes map 1:1 to files (`src/pages/**/*.astro`). English pages live at `/
   - All hard-coded `homeHref` and locale URLs in the content pages
   - The navigation links in `homeContent.ts`
 - Keep CI/CD on Node 20 (`actions/setup-node` already pins it). Regenerate `package-lock.json` only with that version to avoid inconsistencies.
-- After each deploy, smoke-test both locales, the locale toggle, and static assets (`favicon.svg`, CSS) to confirm base URLs are correct.
+- After each deploy, smoke-test both locales, the locale toggle, and static assets (`favicon.png`, CSS) to confirm base URLs are correct.
 
 ## 8. Recommended Workflow
 1. Branch from `master`.

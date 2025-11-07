@@ -1,0 +1,63 @@
+---
+import { landingHighlightsContent, type LandingIconKey, type LandingLocale } from "../data/landingHighlights";
+import { BarChart3, Users, Briefcase } from "lucide-static";
+
+interface Props {
+  locale: LandingLocale;
+}
+
+const iconMap: Record<Extract<LandingIconKey, "barChart3" | "users" | "briefcase">, string> = {
+  barChart3: BarChart3,
+  users: Users,
+  briefcase: Briefcase,
+};
+
+const renderIcon = (key: keyof typeof iconMap, className: string) =>
+  iconMap[key]
+    .replace('class="lucide', `class="lucide ${className}`)
+    .replace('width="24"', 'width="24"')
+    .replace('height="24"', 'height="24"');
+
+const { locale } = Astro.props as Props;
+const currentLocale: LandingLocale = locale === "de" ? "de" : "en";
+const t = landingHighlightsContent[currentLocale];
+---
+
+<section class="section-spacing bg-slate-50">
+  <div class="container-responsive space-y-8">
+    <div class="space-y-3 text-center">
+      <p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">
+        Use Cases
+      </p>
+      <h2
+        id="landing-applications-heading"
+        class="text-3xl font-semibold text-slate-900 sm:text-4xl"
+      >
+        {t.applications.heading}
+      </h2>
+      <p class="mx-auto max-w-3xl text-sm text-slate-600 sm:text-base">
+        {t.applications.description}
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {t.applications.cards.map((card) => (
+        <article class="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <header class="flex items-center gap-3">
+            <div class="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-purple-100 text-purple-600">
+              <span aria-hidden="true" set:html={renderIcon(card.icon, "h-6 w-6")} />
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900">{card.title}</h3>
+          </header>
+          <ul class="mt-4 space-y-2 text-sm text-slate-600 sm:text-base">
+            {card.items.map((item) => (
+              <li class="flex gap-2">
+                <span class="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-200" />
+                <span class="flex-1">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -10,25 +10,341 @@ interface Props {
 }
 
 const { nav, homeHref, alternateLocaleHref } = Astro.props as Props;
+const baseUrl = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
+const logoUrl = `${baseUrl}/vibeperform-logo.png`;
+const toggleId = `nav-toggle-${Math.random().toString(36).slice(2, 9)}`;
+const menuId = `nav-menu-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
-<nav class="mx-auto flex w-full max-w-6xl items-center justify-between py-4">
-	<a class="text-base font-semibold uppercase tracking-[0.35em] text-slate-900" href={homeHref}>{nav.brand}</a>
-	<div class="flex items-center gap-6">
+<header class="section-spacing-tight">
+	<nav class="container-responsive flex items-center justify-between gap-4">
+		<a
+			class="inline-flex items-center"
+			href={homeHref}
+			aria-label={nav.brand}
+		>
+			<img
+				src={logoUrl}
+				alt={nav.brand}
+				class="h-18 w-auto md:h-20"
+				height="40"
+				width="128"
+				loading="eager"
+				decoding="async"
+			/>
+		</a>
+
+		<div class="hidden items-center gap-6 md:flex">
+			{nav.links.map((link) => (
+				<a
+					class="text-xs font-medium uppercase tracking-[0.25em] text-slate-600 hover:text-slate-900 lg:text-sm"
+					href={link.href}
+				>
+					{link.label}
+				</a>
+			))}
+			<a
+				class="inline-flex min-h-[2.5rem] items-center justify-center rounded-full border border-slate-400 px-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-700 hover:border-slate-600 hover:text-slate-900"
+				href={alternateLocaleHref}
+				aria-label={nav.toggleAriaLabel}
+			>
+				{nav.toggleLabel}
+			</a>
+		</div>
+
+		<button
+			id={toggleId}
+			class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 text-slate-700 hover:border-slate-500 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 md:hidden"
+			type="button"
+			aria-expanded="false"
+			aria-controls={menuId}
+			aria-label={nav.menuToggleLabel}
+			data-nav-toggle
+		>
+			<span class="sr-only">{nav.menuToggleLabel}</span>
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
+			</svg>
+		</button>
+	</nav>
+
+	<div
+		id={menuId}
+		class="container-responsive mt-3 grid gap-2 rounded-xl border border-slate-200 bg-white p-4 shadow-lg md:hidden"
+		data-open="false"
+		data-nav-menu
+		aria-hidden="true"
+		hidden
+	>
 		{nav.links.map((link) => (
 			<a
-				class="text-sm font-medium uppercase tracking-[0.25em] text-slate-600 transition hover:text-slate-900"
+				class="rounded-lg px-3 py-2 text-sm font-medium uppercase tracking-[0.2em] text-slate-700 hover:bg-slate-100"
 				href={link.href}
 			>
 				{link.label}
 			</a>
 		))}
 		<a
-			class="rounded-full border border-slate-400 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-700 transition hover:border-slate-600 hover:text-slate-900"
+			class="mt-2 inline-flex min-h-[2.75rem] items-center justify-center rounded-full border border-slate-400 px-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-700 hover:border-slate-600 hover:text-slate-900"
 			href={alternateLocaleHref}
 			aria-label={nav.toggleAriaLabel}
 		>
 			{nav.toggleLabel}
 		</a>
 	</div>
-</nav>
+</header>
+
+<style>
+	[data-nav-menu] {
+		--nav-transition-duration: 220ms;
+		overflow: hidden;
+		max-height: 0;
+		transform: translateY(-0.35rem);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition:
+			max-height var(--nav-transition-duration) ease,
+			opacity var(--nav-transition-duration) ease,
+			transform var(--nav-transition-duration) ease,
+			visibility 0s linear var(--nav-transition-duration);
+	}
+
+	[data-nav-menu][data-open='true'] {
+		max-height: 20rem;
+		opacity: 1;
+		transform: translateY(0);
+		visibility: visible;
+		pointer-events: auto;
+		transition:
+			max-height var(--nav-transition-duration) ease,
+			opacity var(--nav-transition-duration) ease,
+			transform var(--nav-transition-duration) ease;
+	}
+</style>
+
+<script is:inline>
+	(() => {
+		const focusableSelector =
+			'a[href], button:not([disabled]), [tabindex]:not([-1]), [data-nav-focusable="true"]';
+
+		const setupNav = (toggle, menu) => {
+			if (!(toggle instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) {
+				return;
+			}
+
+			if (menu.dataset.navInitialized === 'true') {
+				return;
+			}
+			menu.dataset.navInitialized = 'true';
+
+			let isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+			let previousBodyOverflow = document.body.style.overflow || '';
+
+			const focusElement = (element) => {
+				if (!(element instanceof HTMLElement)) {
+					return;
+				}
+
+				try {
+					element.focus({ preventScroll: true });
+				} catch (_error) {
+					element.focus();
+				}
+			};
+
+			const lockBodyScroll = (lock) => {
+				if (lock) {
+					previousBodyOverflow = document.body.style.overflow || '';
+					document.body.style.overflow = 'hidden';
+				} else {
+					document.body.style.overflow = previousBodyOverflow;
+				}
+			};
+
+			const openMenu = () => {
+				if (isExpanded) {
+					return;
+				}
+				isExpanded = true;
+
+				menu.hidden = false;
+				menu.dataset.open = 'true';
+				menu.setAttribute('aria-hidden', 'false');
+				toggle.setAttribute('aria-expanded', 'true');
+				lockBodyScroll(true);
+
+				const focusable = menu.querySelectorAll(focusableSelector);
+				if (focusable.length) {
+					window.requestAnimationFrame(() => {
+						focusElement(focusable[0]);
+					});
+				}
+			};
+
+			const closeMenu = (focusToggle = true, force = false) => {
+				if (!isExpanded) {
+					return;
+				}
+				isExpanded = false;
+
+				menu.dataset.open = 'false';
+				menu.setAttribute('aria-hidden', 'true');
+				toggle.setAttribute('aria-expanded', 'false');
+				lockBodyScroll(false);
+
+				const finalize = () => {
+					if (!isExpanded) {
+						menu.hidden = true;
+					}
+				};
+
+				if (force) {
+					finalize();
+				} else {
+					menu.addEventListener(
+						'transitionend',
+						(event) => {
+							if (event.target === menu) {
+								finalize();
+							}
+						},
+						{ once: true }
+					);
+				}
+
+				if (focusToggle) {
+					window.requestAnimationFrame(() => {
+						focusElement(toggle);
+					});
+				}
+			};
+
+			const handleKeyDown = (event) => {
+				if (event.key === 'Escape') {
+					closeMenu();
+					return;
+				}
+
+				if (event.key === 'Tab' && isExpanded) {
+					const focusable = Array.from(menu.querySelectorAll(focusableSelector));
+					if (!focusable.length) {
+						return;
+					}
+
+					const first = focusable[0];
+					const last = focusable[focusable.length - 1];
+
+					if (event.shiftKey && document.activeElement === first) {
+						event.preventDefault();
+						focusElement(last);
+					} else if (!event.shiftKey && document.activeElement === last) {
+						event.preventDefault();
+						focusElement(first);
+					}
+				}
+			};
+
+			const handleDocumentClick = (event) => {
+				if (!isExpanded) {
+					return;
+				}
+
+				const target = event.target;
+				if (target instanceof Node && (menu.contains(target) || toggle.contains(target))) {
+					return;
+				}
+				closeMenu();
+			};
+
+			const handleToggleClick = (event) => {
+				event.preventDefault();
+				event.stopPropagation();
+				if (isExpanded) {
+					closeMenu();
+				} else {
+					openMenu();
+				}
+			};
+
+			toggle.addEventListener('click', handleToggleClick);
+
+			menu.querySelectorAll('a').forEach((link) => {
+				link.addEventListener('click', () => {
+					closeMenu(false);
+				});
+			});
+
+			document.addEventListener('keydown', handleKeyDown);
+			document.addEventListener('click', handleDocumentClick);
+
+			const mq = window.matchMedia('(min-width: 768px)');
+			const handleBreakpointChange = (event) => {
+				if (event.matches) {
+					closeMenu(false, true);
+				}
+			};
+
+			if (typeof mq.addEventListener === 'function') {
+				mq.addEventListener('change', handleBreakpointChange);
+			} else if (typeof mq.addListener === 'function') {
+				mq.addListener(handleBreakpointChange);
+			}
+
+			const handlePageShow = () => {
+				isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+				if (!isExpanded) {
+					menu.hidden = true;
+					menu.dataset.open = 'false';
+					menu.setAttribute('aria-hidden', 'true');
+				}
+			};
+
+			window.addEventListener('pageshow', handlePageShow);
+
+			let isCleaned = false;
+			const cleanup = () => {
+				if (isCleaned) {
+					return;
+				}
+				isCleaned = true;
+				closeMenu(false, true);
+				lockBodyScroll(false);
+				toggle.removeEventListener('click', handleToggleClick);
+				document.removeEventListener('keydown', handleKeyDown);
+				document.removeEventListener('click', handleDocumentClick);
+				window.removeEventListener('pageshow', handlePageShow);
+
+				if (typeof mq.removeEventListener === 'function') {
+					mq.removeEventListener('change', handleBreakpointChange);
+				} else if (typeof mq.removeListener === 'function') {
+					mq.removeListener(handleBreakpointChange);
+				}
+
+				menu.dataset.navInitialized = 'false';
+			};
+
+			document.addEventListener('astro:before-swap', cleanup, { once: true });
+			window.addEventListener('beforeunload', cleanup, { once: true });
+		};
+
+		const toggles = document.querySelectorAll('[data-nav-toggle]');
+		toggles.forEach((toggleElement) => {
+			if (!(toggleElement instanceof HTMLButtonElement)) {
+				return;
+			}
+
+			const controls = toggleElement.getAttribute('aria-controls');
+			if (!controls) {
+				return;
+			}
+
+			const menu = document.getElementById(controls);
+			if (!menu) {
+				return;
+			}
+
+			setupNav(toggleElement, menu);
+		});
+	})();
+</script>
