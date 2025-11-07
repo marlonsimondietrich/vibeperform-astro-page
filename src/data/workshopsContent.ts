@@ -85,8 +85,8 @@ export const workshopsContent = {
 				{
 					name: 'Transform a core process',
 					description:
-						'Ideal when you want to reimagine a mission-critical workflow without disrupting day-to-day operations.',
-					scoreFocus: ['Business impact 45%', 'Feasibility 35%', 'Strategic alignment 20%'],
+						"We identify where your workflows hold the most AI potential and how change would land in the day-to-day.",
+					scoreFocus: ['Where do you lose time?', 'Where do workflows break?', 'Where are new revenue opportunities?'],
 					nextMoves: [
 						'Define north star metrics and non-negotiables',
 						'Design pilots with explicit change stories',
@@ -144,7 +144,7 @@ export const workshopsContent = {
 
 		finalCta: {
 			heading: 'Want to see what AI could do in your business?',
-			body: "Book a 30-minute intro. We'll ask how you work today and tell you which format makes sense.",
+			body: "Book a no-strings intro. We'll recommend the workshop that matches your team and goals.",
 			button: {
 				label: 'Book a call',
 				href: 'mailto:hello@vibeperform.com',
@@ -295,7 +295,7 @@ export const workshopsContent = {
 			finalCta: {
 				heading: 'Findet heraus, was bei euch möglich ist!',
 			body:
-				'Bucht ein 30-minütiges Gespräch. Wir verstehen euren Kontext und sagen klar, welches Format für euch Sinn ergibt.',
+				'Buche hier ein unverbindliches Kennenlernen. Wir empfehlen dir den richtigen Workshop für euer Team und Ziel.',
 			button: {
 				label: 'Gespräch buchen',
 				href: 'mailto:hello@vibeperform.com',
