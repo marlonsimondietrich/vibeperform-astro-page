@@ -55,12 +55,12 @@ styles/
   global.css            # Tailwind base styles + custom utilities
 ```
 
-Astro routes map 1:1 to files (`src/pages/**/*.astro`). English pages live at `/vibeperform-astro-page/...`; German pages sit under `/vibeperform-astro-page/de/...`.
+Astro routes map 1:1 to files (`src/pages/**/*.astro`). English pages live at `/...`; German pages sit under `/de/...`.
 
 ## 4. Navigation & Routing Best Practices
 - `NavBar.astro` is the single source of truth for navigation markup. When creating new pages, import it instead of rebuilding headers.
 - Set `homeHref` using the `/vibeperform-astro-page` prefix so deployments under a project subpath keep working.
-- Each page’s locale toggle (`alternateLocaleHref`) should point to the equivalent page in the other language. Keep these links absolute to the project root (e.g. `/vibeperform-astro-page/de/workshops`).
+- Each page’s locale toggle (`alternateLocaleHref`) should point to the equivalent page in the other language. Keep these links absolute to the project root (e.g. `/de/workshops`).
 - Use `npm run build` to validate that generated asset paths respect the base path before publishing.
 
 ## 5. Styling & Color System

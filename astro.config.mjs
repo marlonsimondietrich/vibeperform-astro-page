@@ -6,11 +6,11 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://project-codum.github.io',
-	base: '/vibeperform-astro-page/',
+	site: 'https://www.vibeperform.com',
+	// Remove base when using custom domain
 	integrations: [react()],
 	i18n: {
-		defaultLocale: 'en',
+		defaultLocale: 'de',
 		locales: ['en', 'de'],
 		routing: {
 			prefixDefaultLocale: false,

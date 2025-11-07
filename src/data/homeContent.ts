@@ -5,8 +5,8 @@ export const homeContent = {
 		nav: {
 			brand: 'vibeperform',
 			links: [
-				{ label: 'Workshops', href: '/vibeperform-astro-page/workshops' },
-				{ label: 'About us', href: '/vibeperform-astro-page/about-us' },
+				{ label: 'Workshops', href: '/workshops' },
+				{ label: 'About us', href: '/about-us' },
 			],
 			toggleLabel: 'DE',
 			toggleAriaLabel: 'Switch language to German',
@@ -109,9 +109,9 @@ export const homeContent = {
 		nav: {
 			brand: 'vibeperform',
 			links: [
-				// { label: 'KI Strategie', href: '/vibeperform-astro-page/de/ki-strategie' },
-				{ label: 'Workshops', href: '/vibeperform-astro-page/de/workshops' },
-				{ label: 'Über uns', href: '/vibeperform-astro-page/de/ueber-uns' },
+				// { label: 'KI Strategie', href: '/de/ki-strategie' },
+				{ label: 'Workshops', href: '/de/workshops' },
+				{ label: 'Über uns', href: '/de/ueber-uns' },
 			],
 			toggleLabel: 'EN',
 			toggleAriaLabel: 'Sprache zu Englisch wechseln',

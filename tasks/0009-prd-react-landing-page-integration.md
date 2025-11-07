@@ -40,7 +40,7 @@ Expose the existing React landing page (`docs/landingpage.tsx`) inside the Astro
 ## Technical Considerations
 - Astro’s React integration adds dependencies (`@astrojs/react`, `react`, `react-dom`) and updates `astro.config.mjs`; ensure `package.json`/`package-lock.json` capture these changes.
 - When moving the React files, adjust relative imports (e.g., icon paths) and update TypeScript/TSX compiler options if necessary.
-- Confirm that the new page path respects the configured `base` (`/vibeperform-astro-page/landing-react`) and update any internal links if you add them later.
+- Confirm that the new page path respects the configured `base` (`/landing-react`) and update any internal links if you add them later.
 - Keep the component exported as default (`export default App;`) so Astro can import it directly.
 
 ## Success Metrics

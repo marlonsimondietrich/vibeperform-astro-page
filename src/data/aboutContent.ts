@@ -78,7 +78,7 @@ export const aboutContent = {
 				},
 				{
 					label: 'Explore our workshops',
-					href: '/vibeperform-astro-page/workshops',
+					href: '/workshops',
 					variant: 'secondary',
 				},
 			],
@@ -161,7 +161,7 @@ export const aboutContent = {
 				},
 				{
 					label: 'Unsere Workshops ansehen',
-					href: '/vibeperform-astro-page/de/workshops',
+					href: '/de/workshops',
 					variant: 'secondary',
 				},
 			],
