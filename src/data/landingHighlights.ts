@@ -7,52 +7,43 @@ export const landingHighlightsContent = {
       description: "Where we see quick wins for mid-sized teams.",
       cards: [
         {
-          icon: "barChart3",
-          title: "Sales",
-          items: [
-            "Lead prioritisation",
-            "Proposal & email assistant",
-            "Call preparation",
-          ],
-        },
-        {
-          icon: "users",
-          title: "Customer service",
-          items: [
-            "Knowledge assistant (RAG)",
-            "Ticket triage",
-            "Draft replies with quality check",
-          ],
-        },
-        {
-          icon: "briefcase",
-          title: "Operations",
-          items: [
-            "Document extraction",
-            "Review & approval assistants",
-            "Standard reporting",
-          ],
-        },
-      ],
-    },
-    results: {
-      heading: "Results you can rely on",
-      items: [
-        {
-          icon: "rocket",
-          title: "Tangible",
-          description: "Demo or PoC instead of another slide deck.",
-        },
-        {
-          icon: "badgeCheck",
-          title: "Measurable",
-          description: "Clearly defined KPIs plus acceptance & quality gates.",
-        },
-        {
-          icon: "lightbulb",
-          title: "Decision-ready",
+          title: "Document analysis",
+          imageSrc: "/example1.png",
+          imageAlt: "Document analysis illustration",
           description:
-            "Transparent go, iterate, or stop recommendation per use case.",
+            "We extract the signal from contracts, maintenance forms, and insurance policies.",
+          highlight: "Up to −70% less manual capture effort.",
+          examples: [
+            "Contract analysis: clauses, deadlines, deviations from the standard clause.",
+            "Maintenance/service reports: fault codes, actions taken, spare parts, next due date — history stays current.",
+            "Insurance contracts & policies: coverage limits, deductibles, exclusions, durations — catch renewals on time.",
+          ],
+        },
+        {
+          title: "Sales copilot (next best action)",
+          imageSrc: "/example2.png",
+          imageAlt: "Sales copilot dashboard mockup",
+          description:
+            "We prioritise leads, summarise every interaction, and recommend the next best step.",
+          highlight: "+10–20% conversion, −30% admin effort.",
+          examples: [
+            "Lead prioritisation: scoring from CRM data, website signals, and email engagement.",
+            "Contact summaries: emails / calls / meetings distilled into a CRM note within a minute.",
+            "Follow-up actions: suggested next steps with email/call drafts plus task and calendar entries.",
+          ],
+        },
+        {
+          title: "Proposal assistant",
+          imageSrc: "/example3.png",
+          imageAlt: "Proposal assistant mockup",
+          description:
+            "We generate proposal drafts from templates, past cases, and product data — including pricing and terms.",
+          highlight: "Up to −50% creation time.",
+          examples: [
+            "Prefilled line items: products, quantities, prices pulled from ERP or price lists.",
+            "Terms & service modules: auto-selected clauses based on client and scope.",
+            "Deviation checks: discount/margin, special conditions, and approval workflow.",
+          ],
         },
       ],
     },
@@ -69,23 +60,6 @@ export const landingHighlightsContent = {
       description:
         "Executives, sales/service/operations leads, and IT or data teams who want fast, dependable AI decisions.",
     },
-    nextSteps: {
-      heading: "Next steps",
-      steps: [
-        {
-          title: "Intro call (30 min)",
-          description:
-            "Clarify goals, context, and shortlist candidate use cases.",
-        },
-        {
-          title: "Fix a start date",
-          description:
-            "Schedule the explore workshop, assign stakeholders, and define data access.",
-        },
-      ],
-      ctaLabel: "Get in touch",
-      ctaHref: "https://calendar.app.google/utFQgw33PwJTiDk56",
-    },
   },
   de: {
     applications: {
@@ -93,53 +67,43 @@ export const landingHighlightsContent = {
       description: "Wo wir schnelle Ergebnisse für mittelständische Teams sehen.",
       cards: [
         {
-          icon: "barChart3",
-          title: "Vertrieb",
-          items: [
-            "Lead-Priorisierung",
-            "Angebots- & Mail-Assistent",
-            "Call-Vorbereitung",
-          ],
-        },
-        {
-          icon: "users",
-          title: "Kundenservice",
-          items: [
-            "Wissensassistenz (RAG)",
-            "Ticket-Triage",
-            "Antwort-Entwürfe mit Qualitätscheck",
-          ],
-        },
-        {
-          icon: "briefcase",
-          title: "Operations",
-          items: [
-            "Dokumenten-Extraktion",
-            "Prüf- & Freigabe-Assistenten",
-            "Standardberichte",
-          ],
-        },
-      ],
-    },
-    results: {
-      heading: "Ergebnisse, die Wirkung zeigen",
-      items: [
-        {
-          icon: "rocket",
-          title: "Greifbar",
-          description: "Demo oder PoC – statt weiterer Präsentationsfolien.",
-        },
-        {
-          icon: "badgeCheck",
-          title: "Messbar",
+          title: "Dokumentenanalyse",
+          imageSrc: "/example1.png",
+          imageAlt: "Dokumentenanalyse Beispiel",
           description:
-            "Klar definierte KPIs sowie Akzeptanz- und Qualitätskriterien.",
+            "Wir extrahieren relevante Inhalte und machen Dokumente durchsuchbar.",
+          highlight: "Bis zu −70 % Erfassungsaufwand.",
+          examples: [
+            "Vertragsanalyse: Klauseln, Fristen, Abweichungen zur Standardklausel.",
+            "Wartungs-/Serviceberichte: Fehlercodes, Maßnahmen, Ersatzteile, nächste Fälligkeit – Historie wird aktualisiert.",
+            "Versicherungsverträge & Policen: Deckungssummen, Selbstbehalte, Ausschlüsse, Laufzeiten – Erneuerungen erkennen.",
+          ],
         },
         {
-          icon: "lightbulb",
-          title: "Entscheidungsreif",
+          title: "Vertriebs-Copilot (Next Best Action)",
+          imageSrc: "/example2.png",
+          imageAlt: "Vertriebs-Copilot Beispiel",
           description:
-            "Transparente Go-, Iterate- oder Stop-Empfehlung je Use Case.",
+            "Wir priorisieren Leads, fassen Interaktionen zusammen und schlagen nächste Schritte vor.",
+          highlight: "+10–20 % Conversion, −30 % Admin-Aufwand.",
+          examples: [
+            "Lead-Priorisierung: Scoring aus CRM-Daten, Website-Signalen und E-Mail-Engagement.",
+            "Kontakt-Zusammenfassungen: Mails/Calls/Meetings als CRM-Notiz in einer Minute.",
+            "Folgeaktionen: Vorschläge inklusive Mail-/Call-Entwürfen sowie Termin- und Task-Anlage.",
+          ],
+        },
+        {
+          title: "Angebots-Assistent",
+          imageSrc: "/example3.png",
+          imageAlt: "Angebots-Assistent Beispiel",
+          description:
+            "Wir erzeugen Angebotsentwürfe aus Vorlagen, Fällen und Produktdaten – inkl. Preisen und Konditionen.",
+          highlight: "Bis zu −50 % Erstellungszeit.",
+          examples: [
+            "Vorbefüllte Positionen: Artikel, Mengen, Preise direkt aus ERP oder Preislisten.",
+            "AGB & Leistungsbausteine: Automatisch passend zu Kunde und Leistungsumfang.",
+            "Abweichungsprüfung: Rabatt/Marge, Sonderkonditionen und Freigabe-Workflow.",
+          ],
         },
       ],
     },
@@ -149,29 +113,12 @@ export const landingHighlightsContent = {
         "Wir arbeiten DSGVO-konform, nutzen sichere Setups wie isolierte Tenants, API-basierte Verarbeitung und Datenminimierung und schließen bei Bedarf NDA. Private Cloud und On-Prem-Szenarien sind Teil unseres Werkzeugkastens.",
       ],
       highlight:
-        "Kein Training auf Ihren proprietären Daten ohne ausdrückliche Freigabe.",
+        "Kein Training auf euren proprietären Daten ohne ausdrückliche Freigabe.",
     },
     audience: {
       heading: "Für wen ist unser Angebot gemacht?",
       description:
         "Geschäftsführungen, Leitungen in Vertrieb/Service/Operations sowie IT- oder Daten-Teams, die schnelle, belastbare KI-Entscheidungen wollen.",
-    },
-    nextSteps: {
-      heading: "Nächste Schritte",
-      steps: [
-        {
-          title: "Intro-Call (30 Min.)",
-          description:
-            "Ausgangslage klären und Ziele besprechen.",
-        },
-        {
-          title: "Starttermin festlegen",
-          description:
-            "Explore Workshop terminieren und Stakeholder benennen.",
-        },
-      ],
-      ctaLabel: "Jetzt Kontakt aufnehmen",
-      ctaHref: "https://calendar.app.google/utFQgw33PwJTiDk56",
     },
   },
 } as const;
@@ -180,9 +127,6 @@ export const landingIconKeys = [
   "barChart3",
   "users",
   "briefcase",
-  "rocket",
-  "badgeCheck",
-  "lightbulb",
   "shieldCheck",
 ] as const;
 
