@@ -53,35 +53,13 @@ export const aboutContent = {
 				},
 			],
 		},
-		why: {
-			title: 'Why vibeperform',
-			kicker: 'Impact',
-			paragraphs: [
-				'Many companies know AI is important — but they struggle to act.',
-				'Daily business is packed and the topics feel too big, complex, or time-consuming.',
-				'We help make that step manageable with clear processes, understandable workshops, and close collaboration.',
-				'We guide teams, translate potential into concrete steps, and stay until solutions work in day-to-day operations.',
-			],
-			highlight:
-				'This is how companies get the best out of their resources, automate routines, and create room for what truly matters — innovation, quality, and future readiness.',
-		},
 		connect: {
-			title: 'Get to know us',
-			kicker: 'Next steps',
-			quote: 'Talk to us about your processes, ideas, or open questions.',
-			description: 'We make the next step tangible — from first conversation to roll-out.',
-			buttons: [
-				{
-					label: 'Book a free intro call',
-					href: 'mailto:hello@vibeperform.com',
-					variant: 'primary',
-				},
-				{
-					label: 'Explore our workshops',
-					href: '/workshops',
-					variant: 'secondary',
-				},
-			],
+			title: 'Want to see what AI could do in your business?',
+			body: "Book a no-strings intro. We'll recommend the workshop that matches your team and goals.",
+			button: {
+				label: 'Book a call',
+				href: 'https://calendar.app.google/utFQgw33PwJTiDk56',
+			},
 		},
 	},
 	de: {
@@ -136,35 +114,14 @@ export const aboutContent = {
 				},
 			],
 		},
-		why: {
-			title: 'Warum vibeperform',
-			kicker: 'Wirkung',
-			paragraphs: [
-				'Viele Unternehmen wissen, dass KI wichtig ist – aber sie kommen nicht ins Handeln.',
-				'Der Alltag ist voll, die Themen scheinen zu groß, zu komplex oder zu aufwendig.',
-				'Wir helfen, diesen Schritt machbar zu machen – mit klaren Prozessen, verständlichen Workshops und enger Zusammenarbeit.',
-				'Wir nehmen Teams an die Hand, übersetzen Potenziale in konkrete Schritte und bleiben dran, bis Lösungen wirklich im Alltag wirken.',
-			],
-			highlight:
-				'So holen Unternehmen das Beste aus ihren Ressourcen heraus, automatisieren Routinen und schaffen Freiraum für das, was wirklich zählt – Innovation, Qualität und Zukunftssicherheit.',
-		},
 		connect: {
-			title: 'Lernen Sie uns kennen',
-			kicker: 'Nächste Schritte',
-			quote: 'Sprechen Sie mit uns über Ihre Prozesse, Ideen oder offenen Fragen.',
-			description: 'Wir machen den nächsten Schritt machbar – vom Erstgespräch bis zur Umsetzung.',
-			buttons: [
-				{
-					label: 'Kostenloses Erstgespräch vereinbaren',
-					href: 'mailto:hello@vibeperform.com',
-					variant: 'primary',
-				},
-				{
-					label: 'Unsere Workshops ansehen',
-					href: '/de/workshops',
-					variant: 'secondary',
-				},
-			],
+			title: 'Findet heraus, was bei euch möglich ist!',
+			body:
+				'Buche hier ein unverbindliches Kennenlernen. Wir empfehlen dir den richtigen Workshop für euer Team und Ziel.',
+			button: {
+				label: 'Gespräch buchen',
+				href: 'https://calendar.app.google/utFQgw33PwJTiDk56',
+			},
 		},
 	},
 } as const;

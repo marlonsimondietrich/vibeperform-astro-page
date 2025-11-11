@@ -26,7 +26,7 @@ const copy = {
 		legal: 'All rights reserved.',
 	},
 	de: {
-		tagline: 'Wir begleiten Mittelstandsteams dabei, Mehrwerte durch KI zu erkennen und umzusetzen.',
+		tagline: 'Wir begleiten Teams dabei, Mehrwerte durch KI zu erkennen und umzusetzen.',
 		linksLabel: 'Entdecken',
 		contactLabel: 'Kontakt',
 		contactIntro: 'Erzähl uns, woran ihr arbeitet.',
@@ -55,7 +55,7 @@ const localizedCopy = copy[locale];
 				<p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">{nav.brand}</p>
 				<p class="text-sm leading-relaxed text-slate-300">{localizedCopy.tagline}</p>
 					<a
-						class="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-slate-900 transition hover:bg-slate-200"
+						class="inline-flex w-full items-center justify-center rounded-full border border-transparent bg-white px-6 py-3 text-sm font-semibold text-purple-600 shadow-sm transition hover:bg-purple-50 hover:text-purple-700 sm:w-auto"
 						href={localizedCopy.actionHref}
 					>
 						{localizedCopy.actionLabel}
