@@ -7,30 +7,15 @@ export const landingHighlightsContent = {
       description: "Where we see quick wins for mid-sized teams.",
       cards: [
         {
-          icon: "barChart3",
-          title: "Sales",
-          items: [
-            "Lead prioritisation",
-            "Proposal & email assistant",
-            "Call preparation",
-          ],
-        },
-        {
-          icon: "users",
-          title: "Customer service",
-          items: [
-            "Knowledge assistant (RAG)",
-            "Ticket triage",
-            "Draft replies with quality check",
-          ],
-        },
-        {
-          icon: "briefcase",
-          title: "Operations",
-          items: [
-            "Document extraction",
-            "Review & approval assistants",
-            "Standard reporting",
+          title: "Document analysis",
+          imageSrc: "/example1.png",
+          imageAlt: "Document analysis illustration",
+          description:
+            "We extract the signal from contracts, maintenance forms, and insurance policies. Up to −70% capture effort.",
+          examples: [
+            "Contract reviews: clauses, terms, variances from standard wording.",
+            "Maintenance/service reports: fault codes, actions, parts, next due date — historical log stays current.",
+            "Insurance policies: coverage, deductibles, exclusions, durations — spot renewals in time.",
           ],
         },
       ],
@@ -55,30 +40,15 @@ export const landingHighlightsContent = {
       description: "Wo wir schnelle Ergebnisse für mittelständische Teams sehen.",
       cards: [
         {
-          icon: "barChart3",
-          title: "Vertrieb",
-          items: [
-            "Lead-Priorisierung",
-            "Angebots- & Mail-Assistent",
-            "Call-Vorbereitung",
-          ],
-        },
-        {
-          icon: "users",
-          title: "Kundenservice",
-          items: [
-            "Wissensassistenz (RAG)",
-            "Ticket-Triage",
-            "Antwort-Entwürfe mit Qualitätscheck",
-          ],
-        },
-        {
-          icon: "briefcase",
-          title: "Operations",
-          items: [
-            "Dokumenten-Extraktion",
-            "Prüf- & Freigabe-Assistenten",
-            "Standardberichte",
+          title: "Dokumentenanalyse",
+          imageSrc: "/example1.png",
+          imageAlt: "Dokumentenanalyse Beispiel",
+          description:
+            "Wir extrahieren relevante Inhalte und machen Dokumente durchsuchbar. Bis zu −70 % Erfassungsaufwand.",
+          examples: [
+            "Vertragsanalyse: Klauseln, Fristen, Abweichungen zur Standardklausel.",
+            "Wartungs-/Serviceberichte: Fehlercodes, Maßnahmen, Ersatzteile, nächste Fälligkeit – Historie wird aktualisiert.",
+            "Versicherungsverträge & Policen: Deckungssummen, Selbstbehalte, Ausschlüsse, Laufzeiten – Erneuerungen erkennen.",
           ],
         },
       ],
