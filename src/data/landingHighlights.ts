@@ -11,11 +11,38 @@ export const landingHighlightsContent = {
           imageSrc: "/example1.png",
           imageAlt: "Document analysis illustration",
           description:
-            "We extract the signal from contracts, maintenance forms, and insurance policies. Up to −70% capture effort.",
+            "We extract the signal from contracts, maintenance forms, and insurance policies.",
+          highlight: "Up to −70% less manual capture effort.",
           examples: [
-            "Contract reviews: clauses, terms, variances from standard wording.",
-            "Maintenance/service reports: fault codes, actions, parts, next due date — historical log stays current.",
-            "Insurance policies: coverage, deductibles, exclusions, durations — spot renewals in time.",
+            "Contract analysis: clauses, deadlines, deviations from the standard clause.",
+            "Maintenance/service reports: fault codes, actions taken, spare parts, next due date — history stays current.",
+            "Insurance contracts & policies: coverage limits, deductibles, exclusions, durations — catch renewals on time.",
+          ],
+        },
+        {
+          title: "Sales copilot (next best action)",
+          imageSrc: "/example2.png",
+          imageAlt: "Sales copilot dashboard mockup",
+          description:
+            "We prioritise leads, summarise every interaction, and recommend the next best step.",
+          highlight: "+10–20% conversion, −30% admin effort.",
+          examples: [
+            "Lead prioritisation: scoring from CRM data, website signals, and email engagement.",
+            "Contact summaries: emails / calls / meetings distilled into a CRM note within a minute.",
+            "Follow-up actions: suggested next steps with email/call drafts plus task and calendar entries.",
+          ],
+        },
+        {
+          title: "Proposal assistant",
+          imageSrc: "/example3.png",
+          imageAlt: "Proposal assistant mockup",
+          description:
+            "We generate proposal drafts from templates, past cases, and product data — including pricing and terms.",
+          highlight: "Up to −50% creation time.",
+          examples: [
+            "Prefilled line items: products, quantities, prices pulled from ERP or price lists.",
+            "Terms & service modules: auto-selected clauses based on client and scope.",
+            "Deviation checks: discount/margin, special conditions, and approval workflow.",
           ],
         },
       ],
@@ -44,11 +71,38 @@ export const landingHighlightsContent = {
           imageSrc: "/example1.png",
           imageAlt: "Dokumentenanalyse Beispiel",
           description:
-            "Wir extrahieren relevante Inhalte und machen Dokumente durchsuchbar. Bis zu −70 % Erfassungsaufwand.",
+            "Wir extrahieren relevante Inhalte und machen Dokumente durchsuchbar.",
+          highlight: "Bis zu −70 % Erfassungsaufwand.",
           examples: [
             "Vertragsanalyse: Klauseln, Fristen, Abweichungen zur Standardklausel.",
             "Wartungs-/Serviceberichte: Fehlercodes, Maßnahmen, Ersatzteile, nächste Fälligkeit – Historie wird aktualisiert.",
             "Versicherungsverträge & Policen: Deckungssummen, Selbstbehalte, Ausschlüsse, Laufzeiten – Erneuerungen erkennen.",
+          ],
+        },
+        {
+          title: "Vertriebs-Copilot (Next Best Action)",
+          imageSrc: "/example2.png",
+          imageAlt: "Vertriebs-Copilot Beispiel",
+          description:
+            "Wir priorisieren Leads, fassen Interaktionen zusammen und schlagen nächste Schritte vor.",
+          highlight: "+10–20 % Conversion, −30 % Admin-Aufwand.",
+          examples: [
+            "Lead-Priorisierung: Scoring aus CRM-Daten, Website-Signalen und E-Mail-Engagement.",
+            "Kontakt-Zusammenfassungen: Mails/Calls/Meetings als CRM-Notiz in einer Minute.",
+            "Folgeaktionen: Vorschläge inklusive Mail-/Call-Entwürfen sowie Termin- und Task-Anlage.",
+          ],
+        },
+        {
+          title: "Angebots-Assistent",
+          imageSrc: "/example3.png",
+          imageAlt: "Angebots-Assistent Beispiel",
+          description:
+            "Wir erzeugen Angebotsentwürfe aus Vorlagen, Fällen und Produktdaten – inkl. Preisen und Konditionen.",
+          highlight: "Bis zu −50 % Erstellungszeit.",
+          examples: [
+            "Vorbefüllte Positionen: Artikel, Mengen, Preise direkt aus ERP oder Preislisten.",
+            "AGB & Leistungsbausteine: Automatisch passend zu Kunde und Leistungsumfang.",
+            "Abweichungsprüfung: Rabatt/Marge, Sonderkonditionen und Freigabe-Workflow.",
           ],
         },
       ],

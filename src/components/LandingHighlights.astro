@@ -1,22 +1,9 @@
 ---
-import { landingHighlightsContent, type LandingIconKey, type LandingLocale } from "../data/landingHighlights";
-import { BarChart3, Users, Briefcase } from "lucide-static";
+import { landingHighlightsContent, type LandingLocale } from "../data/landingHighlights";
 
 interface Props {
   locale: LandingLocale;
 }
-
-const iconMap: Record<Extract<LandingIconKey, "barChart3" | "users" | "briefcase">, string> = {
-  barChart3: BarChart3,
-  users: Users,
-  briefcase: Briefcase,
-};
-
-const renderIcon = (key: keyof typeof iconMap, className: string) =>
-  iconMap[key]
-    .replace('class="lucide', `class="lucide ${className}`)
-    .replace('width="24"', 'width="24"')
-    .replace('height="24"', 'height="24"');
 
 const { locale } = Astro.props as Props;
 const currentLocale: LandingLocale = locale === "de" ? "de" : "en";
@@ -40,62 +27,67 @@ const t = landingHighlightsContent[currentLocale];
       </p>
     </div>
     <div class="space-y-6">
-      {t.applications.cards.map((card) => (
-        <article class="flex flex-col gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:flex-row md:items-stretch md:p-8">
-          <div class="space-y-4 md:flex-1">
-            <header class="space-y-2">
-              <p class="text-xs font-semibold uppercase tracking-[0.35em] text-purple-500">
-                {locale === "de" ? "Use Case" : "Use case"}
-              </p>
-              <h3 class="text-2xl font-semibold text-slate-900 sm:text-3xl">{card.title}</h3>
-            </header>
-            {card.description ? (
-              <p class="text-base text-slate-600 sm:text-lg">
-                {card.description}{" "}
-                {card.highlight ? (
-                  <strong class="text-slate-900">{card.highlight}</strong>
-                ) : null}
-              </p>
-            ) : null}
-            {card.examples ? (
-              <div class="space-y-3 text-sm text-slate-600 sm:text-base">
-                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                  {locale === "de" ? "Beispiele" : "Examples"}
+      {t.applications.cards.map((card, index) => {
+        const isImageRight = index % 2 === 0 ? true : false;
+        const layoutClass = isImageRight ? "md:flex-row" : "md:flex-row-reverse";
+        const imageRotateClass = isImageRight ? "md:rotate-3" : "md:-rotate-3";
+        return (
+          <article class={`flex flex-col gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:items-stretch md:p-8 ${layoutClass}`}>
+            <div class="space-y-4 md:flex-1">
+              <header class="space-y-2">
+                <p class="text-xs font-semibold uppercase tracking-[0.35em] text-purple-500">
+                  {locale === "de" ? "Use Case" : "Use case"}
                 </p>
-                <ul class="space-y-3">
-                  {card.examples.map((example) => {
-                    const [title, ...rest] = example.split(":");
-                    const description = rest.join(":").trim();
-                    return (
-                      <li class="flex gap-3 rounded-2xl bg-slate-50 p-3 text-slate-700 shadow-inner">
-                        <span class="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-purple-400" />
-                        <span>
-                          <strong class="font-semibold text-slate-900">{title}</strong>
-                          {description ? `: ${description}` : ""}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            ) : null}
-          </div>
-          <div class="relative overflow-hidden rounded-3xl bg-purple-50 p-4 sm:p-6 md:flex md:w-2/5 md:items-center md:justify-center">
-            {card.imageSrc ? (
-              <img
-                src={card.imageSrc}
-                alt={card.imageAlt ?? card.title}
-                class="max-h-80 w-full origin-center rounded-2xl object-contain shadow-md md:max-h-[22rem] md:rotate-3"
-                loading="lazy"
-              />
-            ) : (
-              <div class="flex h-full items-center justify-center text-purple-200">
-                <span class="text-sm">{locale === "de" ? "Visual folgt" : "Visual coming soon"}</span>
-              </div>
-            )}
-          </div>
-        </article>
-      ))}
+                <h3 class="text-2xl font-semibold text-slate-900 sm:text-3xl">{card.title}</h3>
+              </header>
+              {card.description ? (
+                <p class="text-base text-slate-600 sm:text-lg">
+                  {card.description}{" "}
+                  {card.highlight ? (
+                    <span class="text-slate-900">{card.highlight}</span>
+                  ) : null}
+                </p>
+              ) : null}
+              {card.examples ? (
+                <div class="space-y-3 text-sm text-slate-600 sm:text-base">
+                  <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                    {locale === "de" ? "Beispiele" : "Examples"}
+                  </p>
+                  <ul class="space-y-3">
+                    {card.examples.map((example) => {
+                      const [title, ...rest] = example.split(":");
+                      const description = rest.join(":").trim();
+                      return (
+                        <li class="flex gap-3 rounded-2xl bg-slate-50 p-3 text-slate-700 shadow-inner">
+                          <span class="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-purple-400" />
+                          <span>
+                            <strong class="font-semibold text-slate-900">{title}</strong>
+                            {description ? `: ${description}` : ""}
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
+            <div class="relative overflow-hidden rounded-3xl bg-purple-50 p-4 sm:p-6 md:flex md:w-2/5 md:items-center md:justify-center">
+              {card.imageSrc ? (
+                <img
+                  src={card.imageSrc}
+                  alt={card.imageAlt ?? card.title}
+                  class={`max-h-80 w-full origin-center rounded-2xl object-contain shadow-md md:max-h-[22rem] ${imageRotateClass}`}
+                  loading="lazy"
+                />
+              ) : (
+                <div class="flex h-full items-center justify-center text-purple-200">
+                  <span class="text-sm">{locale === "de" ? "Visual folgt" : "Visual coming soon"}</span>
+                </div>
+              )}
+            </div>
+          </article>
+        );
+      })}
     </div>
   </div>
 </section>
