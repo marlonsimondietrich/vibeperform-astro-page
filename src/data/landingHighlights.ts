@@ -35,27 +35,6 @@ export const landingHighlightsContent = {
         },
       ],
     },
-    results: {
-      heading: "Results you can rely on",
-      items: [
-        {
-          icon: "rocket",
-          title: "Tangible",
-          description: "Demo or PoC instead of another slide deck.",
-        },
-        {
-          icon: "badgeCheck",
-          title: "Measurable",
-          description: "Clearly defined KPIs plus acceptance & quality gates.",
-        },
-        {
-          icon: "lightbulb",
-          title: "Decision-ready",
-          description:
-            "Transparent go, iterate, or stop recommendation per use case.",
-        },
-      ],
-    },
     security: {
       heading: "Data protection & security",
       body: [
@@ -68,23 +47,6 @@ export const landingHighlightsContent = {
       heading: "Who is this for?",
       description:
         "Executives, sales/service/operations leads, and IT or data teams who want fast, dependable AI decisions.",
-    },
-    nextSteps: {
-      heading: "Next steps",
-      steps: [
-        {
-          title: "Intro call (30 min)",
-          description:
-            "Clarify goals, context, and shortlist candidate use cases.",
-        },
-        {
-          title: "Fix a start date",
-          description:
-            "Schedule the explore workshop, assign stakeholders, and define data access.",
-        },
-      ],
-      ctaLabel: "Get in touch",
-      ctaHref: "https://calendar.app.google/utFQgw33PwJTiDk56",
     },
   },
   de: {
@@ -121,57 +83,18 @@ export const landingHighlightsContent = {
         },
       ],
     },
-    results: {
-      heading: "Ergebnisse, die Wirkung zeigen",
-      items: [
-        {
-          icon: "rocket",
-          title: "Greifbar",
-          description: "Demo oder PoC – statt weiterer Präsentationsfolien.",
-        },
-        {
-          icon: "badgeCheck",
-          title: "Messbar",
-          description:
-            "Klar definierte KPIs sowie Akzeptanz- und Qualitätskriterien.",
-        },
-        {
-          icon: "lightbulb",
-          title: "Entscheidungsreif",
-          description:
-            "Transparente Go-, Iterate- oder Stop-Empfehlung je Use Case.",
-        },
-      ],
-    },
     security: {
       heading: "Datenschutz & Sicherheit",
       body: [
         "Wir arbeiten DSGVO-konform, nutzen sichere Setups wie isolierte Tenants, API-basierte Verarbeitung und Datenminimierung und schließen bei Bedarf NDA. Private Cloud und On-Prem-Szenarien sind Teil unseres Werkzeugkastens.",
       ],
       highlight:
-        "Kein Training auf Ihren proprietären Daten ohne ausdrückliche Freigabe.",
+        "Kein Training auf euren proprietären Daten ohne ausdrückliche Freigabe.",
     },
     audience: {
       heading: "Für wen ist unser Angebot gemacht?",
       description:
         "Geschäftsführungen, Leitungen in Vertrieb/Service/Operations sowie IT- oder Daten-Teams, die schnelle, belastbare KI-Entscheidungen wollen.",
-    },
-    nextSteps: {
-      heading: "Nächste Schritte",
-      steps: [
-        {
-          title: "Intro-Call (30 Min.)",
-          description:
-            "Ausgangslage klären und Ziele besprechen.",
-        },
-        {
-          title: "Starttermin festlegen",
-          description:
-            "Explore Workshop terminieren und Stakeholder benennen.",
-        },
-      ],
-      ctaLabel: "Jetzt Kontakt aufnehmen",
-      ctaHref: "https://calendar.app.google/utFQgw33PwJTiDk56",
     },
   },
 } as const;
@@ -180,9 +103,6 @@ export const landingIconKeys = [
   "barChart3",
   "users",
   "briefcase",
-  "rocket",
-  "badgeCheck",
-  "lightbulb",
   "shieldCheck",
 ] as const;
 
